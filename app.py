@@ -60,6 +60,31 @@ def crearUsuario():
         return render_template('exito.html')
     else:
         return render_template('crear.html')
+@app.route('/login',methods = ['GET', 'POST'])
+def login():
+    if (request.method == 'POST'):
+        password = request.form.get('password')
+        mail = request.form.get('mail')
+        try:
+            db = get_database()
+        except Exception as e:
+            eprint(e)
+            return 'Error conectando con la base de datos'
+        
+        usuarios = db['usuarios']
+        
+        users = list(usuarios.find({"mail":mail}))
+        print(users)
+        if(not users ):
+            return "Error, el email no esta registrado"
+        user = users[0]
+
+        if(str(user['password']) == str(password) ):
+            return "Bienvenido " + user['username'] 
+        else:
+            return "Error, contraseña incorrecta"
+    else:
+        return render_template('login.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')     # open for everyone
