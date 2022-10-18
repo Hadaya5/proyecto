@@ -1,13 +1,26 @@
 version: "3.9"
 services:
   flask:
+    image: python-flask
     build: .
     ports:
       - "5000:5000"
+    depends_on:
+      - mongo
     links:
       - mongo
+    volumes:
+      - ./:/usr/src/app
+    entrypoint:
+      - flask
+      - run
+      - --host=0.0.0.0
+    environment:
+      FLASK_DEBUG: 1
+      FLASK_APP: ./app.py
+
   mongo:
-    image: mongo
+    image: mongo:5.0
     ports:
       - "27017:27017"
     environment:

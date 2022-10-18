@@ -1,0 +1,34 @@
+name: Workflow en docker
+
+on:
+  push:
+    branches: [ "main" , "features/*"]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: ./.github/actions/create-docker
+        id: docker-action
+    needs: tests
+    if: github.ref == 'refs/heads/master'
+    
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker-compose up -d
+    - name: test
+      run: docker-compose up -d
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: test docker compose
+      run: docker-compose up -d

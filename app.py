@@ -60,6 +60,8 @@ def crearUsuario():
         return render_template('exito.html')
     else:
         return render_template('crear.html')
-
+@app.route('/test',methods = ['GET', 'POST'])
+def test():
+    return 'Hello World!\n'
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')     # open for everyone
+    app.run(host='0.0.0.0',debug=True)     # open for everyone
