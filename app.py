@@ -87,6 +87,10 @@ def login():
             return "Error, contraseña incorrecta"
     else:
         return render_template('login.html')
-
+@app.route('/post',methods = ['GET', 'POST'])
+def post():
+    if(request.method == 'GET'):
+        return render_template('publicacion.html')
+    
 if __name__ == '__main__':
     app.run(host='0.0.0.0')     # open for everyone
