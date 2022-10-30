@@ -8,17 +8,29 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
 </head>
 <body>
     <ion-app>
+        <ion-menu type="overlay" content-id="main-content">
+            <ion-header>
+                <ion-toolbar>
+                <ion-title>Menu Content</ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">This is the menu content.</ion-content>
+          </ion-menu>
+        <div class="ion-page" id = "main-content">
         <ion-header>
             <ion-toolbar color="dark">
-                <ion-title>
+                <ion-buttons id="toolbar-menu-button" >
+                    <ion-menu-button></ion-menu-button>
+                </ion-buttons>
+                <ion-title slot="end">
                     ATInet
                 </ion-title>
-                <ion-buttons slot="end">
+                <ion-buttons id="toolbar-buttons" slot="end">
+
                     <ion-button >
                         <p>Inicio</p>
                     </ion-button>
@@ -42,7 +54,7 @@
             <ion-grid>
                 <ion-row>
                     <ion-col offset-xs="0" size-xs="12" offset-md="1" size-md="4">
-                        <ion-img src="pexels-jessica-ticozzelli-4342427.jpg">
+                        <ion-img src="{{url_for('static', filename='images/home.jpg')}}">
 
                         </ion-img>   
                     </ion-col>
@@ -52,6 +64,7 @@
                 </ion-row>
             </ion-grid>
         </ion-content>
+    </div>
     </ion-app>
 </body>
 </html>
