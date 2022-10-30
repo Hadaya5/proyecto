@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de ionic</title>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <ion-app>
+        <ion-header>
+            <ion-toolbar color="dark">
+                <ion-title href="home.html">
+                    ATInet
+                </ion-title>
+                <ion-buttons slot="end">
+                    <ion-button >
+                        <p>Inicio</p>
+                    </ion-button>
+                    <ion-button >
+                        <p>Sobre nosotros</p>
+                    </ion-button>
+                    <ion-button >
+                        <p>condiciones generales</p>
+                    </ion-button>
+                    <ion-button class="login-button" href="login.html">
+                        Iniciar sesión
+                    </ion-button>
+                    <!--<ion-button class="login-button" >
+                        Registrarse
+                    </ion-button>-->
+
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col size-xs="12" size-md="6" offset-md="3" size-lg="4" offset-lg="4">
+                        <ion-card>
+                            <ion-card-header>
+                                <ion-card-title>
+                                    <p>Registrarse</p>
+                                </ion-card-title>
+                            </ion-card-header>
+
+                            <ion-card-content>
+                                <ion-item>
+                                    <ion-label position="floating">
+                                        Nombre
+                                    </ion-label>
+                                    <ion-input type="text"></ion-input>
+                                </ion-item>
+
+                                <ion-item>
+                                    <ion-label position="floating">
+                                        Apellido
+                                    </ion-label>
+                                    <ion-input type="text"></ion-input>
+                                </ion-item>
+
+                                <ion-item>
+                                    <ion-label position="floating">
+                                        Correo
+                                        <ion-icon name="mail-outline"></ion-icon>
+                                    </ion-label>
+                                    <ion-input type="email"></ion-input>
+                                </ion-item>
+
+                                <ion-item>
+                                    <ion-label position="floating">
+                                        Contraseña
+                                        <ion-icon name="key-outline"></ion-icon>
+                                    </ion-label>
+                                    <ion-input type="password"></ion-input>
+                                </ion-item>
+
+                                <ion-item>
+                                    <ion-label position="floating">
+                                        Vuelva a escribir su contraseña
+                                        <ion-icon name="key-outline"></ion-icon>
+                                    </ion-label>
+                                    <ion-input type="password"></ion-input>
+                                </ion-item>
+
+                                <ion-radio-group value="custom-checked">
+                                    <ion-item>
+                                        <ion-label>Mujer</ion-label>
+                                        <ion-radio value="custom-checked"></ion-radio>
+                                    </ion-item>
+                                    <ion-item>
+                                        <ion-label>Hombre</ion-label>
+                                        <ion-radio value="custom"></ion-radio>
+                                    </ion-item>
+                                </ion-radio-group>
+
+                                <ion-button class="center-button" color="primary">
+                                    Crear cuenta
+                                    <ion-icon slot="start" name="log-in-outline"></ion-icon>
+                                </ion-button>
+
+                            </ion-card-content>
+                        </ion-card>
+            
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-content>
+    </ion-app>
+</body>
+</html>

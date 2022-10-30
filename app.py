@@ -19,10 +19,12 @@ def get_database():
 
    return client['facebook']
 @app.route('/')
-def hello_world():
-    return render_template('index.html')
-@app.route('/usuarios')
-def listarUsuarios():
+def home():
+    return render_template('home.html')
+@app.route('/signup',methods = ['GET', 'POST'])
+def sign():
+    if(request.method == 'GET'):
+        return render_template('signup.html')
     try:
         db = get_database()
         collection = db['usuarios']

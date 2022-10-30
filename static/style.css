@@ -1,0 +1,31 @@
+
+
+p {
+    text-align: center;
+}
+
+ion-col {
+    top: 50px;
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+.login-button{
+    background-color: #d9d9d9;
+    border-radius: 5px;
+    color: black;
+}
+
+.center-button {
+    width: 180px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 20px;
+}
+
+#cambiarContrasena{
+    text-align: center;
+    margin: 25px;
+}

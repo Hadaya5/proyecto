@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <ion-app>
+        <ion-header>
+            <ion-toolbar color="dark">
+                <ion-title>
+                    ATInet
+                </ion-title>
+                <ion-buttons slot="end">
+                    <ion-button >
+                        <p>Inicio</p>
+                    </ion-button>
+                    <ion-button >
+                        <p>Sobre nosotros</p>
+                    </ion-button>
+                    <ion-button >
+                        <p>condiciones generales</p>
+                    </ion-button>
+                    <ion-button class="login-button" href="login.html">
+                        Iniciar sesión
+                    </ion-button>
+                    <ion-button class="login-button" href="signUp.html">
+                        Registrarse
+                    </ion-button>
+
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col offset-xs="0" size-xs="12" offset-md="1" size-md="4">
+                        <ion-img src="pexels-jessica-ticozzelli-4342427.jpg">
+
+                        </ion-img>   
+                    </ion-col>
+                    <ion-col offset-xs="0" size-xs="12" offset-md=2 size-md="5">
+                        <h1>Bienvenido al sitio donde podras comunicarte y disfrutar con tus amigos y familiares</h1>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-content>
+    </ion-app>
+</body>
+</html>
