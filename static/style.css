@@ -1,4 +1,6 @@
-
+:root {
+	--ion-background-color: #eee;
+}
 
 p {
     text-align: center;
@@ -9,7 +11,7 @@ ion-col {
 }
 
 body {
-    background-color: antiquewhite;
+    background-color: red;
 }
 
 .login-button{
@@ -28,4 +30,9 @@ body {
 #cambiarContrasena{
     text-align: center;
     margin: 25px;
+}
+
+ion-avatar {
+    height: 60px; 
+    width: 60px; 
 }

@@ -1,0 +1,42 @@
+#perfil {
+    min-height: 130px; 
+    min-width: 130px; 
+}
+
+.portada {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+    overflow: hidden;
+}
+
+#profile-container {
+    width: 940px; 
+    height: 250px; 
+    overflow: hidden;
+}
+
+#portada {
+    max-width: 940px;
+    max-height: 500px;
+    background-position-x: center;
+    position: relative;
+    top: -50%;
+}
+
+ion-card {
+    --ion-background-color: #ffffff;
+    --color: #000000;
+    
+    
+}
+
+ion-card-content {
+    --height: 100px;
+    --width: 100px;
+}
+
+.media {
+    margin-top: 25px;
+}
