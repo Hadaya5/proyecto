@@ -12,31 +12,8 @@
 </head>
 <body>
     <ion-app>
-        <ion-header>
-            <ion-toolbar color="dark">
-                <ion-title>
-                    ATInet
-                </ion-title>
-                <ion-buttons slot="end">
-                    <ion-button >
-                        <p>Inicio</p>
-                    </ion-button>
-                    <ion-button >
-                        <p>Sobre nosotros</p>
-                    </ion-button>
-                    <ion-button >
-                        <p>condiciones generales</p>
-                    </ion-button>
-                    <ion-button class="login-button" href="login.html">
-                        Iniciar sesión
-                    </ion-button>
-                    <ion-button class="login-button" href="signUp.html">
-                        Registrarse
-                    </ion-button>
-
-                </ion-buttons>
-            </ion-toolbar>
-        </ion-header>
+        {% import './macros/toolbar.html' as toolbar %}
+        {{toolbar.toolbar()}}
         <ion-content>
             <ion-grid>
                 <ion-row>

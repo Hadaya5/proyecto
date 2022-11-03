@@ -9,47 +9,13 @@
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
     <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='toolbar.css')}}">
+
 </head>
 <body>
     <ion-app>
-        <ion-menu type="overlay" content-id="main-content">
-            <ion-header>
-                <ion-toolbar>
-                <ion-title>Menu Content</ion-title>
-                </ion-toolbar>
-            </ion-header>
-            <ion-content class="ion-padding">This is the menu content.</ion-content>
-          </ion-menu>
-        <div class="ion-page" id = "main-content">
-        <ion-header>
-            <ion-toolbar color="dark">
-                <ion-buttons id="toolbar-menu-button" >
-                    <ion-menu-button></ion-menu-button>
-                </ion-buttons>
-                <ion-title slot="end">
-                    ATInet
-                </ion-title>
-                <ion-buttons id="toolbar-buttons" slot="end">
-
-                    <ion-button >
-                        <p>Inicio</p>
-                    </ion-button>
-                    <ion-button >
-                        <p>Sobre nosotros</p>
-                    </ion-button>
-                    <ion-button >
-                        <p>condiciones generales</p>
-                    </ion-button>
-                    <ion-button class="login-button" href="login.html">
-                        Iniciar sesión
-                    </ion-button>
-                    <ion-button class="login-button" href="signUp.html">
-                        Registrarse
-                    </ion-button>
-
-                </ion-buttons>
-            </ion-toolbar>
-        </ion-header>
+        {% import './macros/toolbar.html' as toolbar %}
+        {{toolbar.toolbar()}}
         <ion-content>
             <ion-grid>
                 <ion-row>

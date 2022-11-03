@@ -1,0 +1,33 @@
+
+{% macro toolbar(loged=False) -%}
+
+<style>
+
+@media screen and (max-width: 640px) {
+
+#toolbar-buttons{
+    display: none;
+}
+
+}
+@media screen and (min-width: 640px) {
+
+#toolbar-menu-button{
+    visibility: hidden;
+    display: none;
+}
+
+}
+
+
+</style>
+{% import './macros/menus.html' as menus %}
+{% import './macros/headers.html' as headers %}
+{{menus.main() }}
+{% if loged  %}
+{{headers.loged()}}
+{% else %}
+{{headers.header()}}
+
+{% endif %}
+{%- endmacro %}

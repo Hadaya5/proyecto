@@ -2,28 +2,25 @@
     min-height: 130px; 
     min-width: 130px; 
 }
-
-.portada {
+.container-portada{
     width: 100%;
-    height: auto;
-    display: block;
+    display: flex;
+    align-items: center;
+
+}
+.portada {
+    width: 30px;
+    height: 30px    ;
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+    position: relative;
     margin: auto;
     overflow: hidden;
+    object-fit: cover;
+
 }
 
-#profile-container {
-    width: 940px; 
-    height: 250px; 
-    overflow: hidden;
-}
-
-#portada {
-    max-width: 940px;
-    max-height: 500px;
-    background-position-x: center;
-    position: relative;
-    top: -50%;
-}
 
 ion-card {
     --ion-background-color: #ffffff;

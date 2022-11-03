@@ -92,5 +92,11 @@ def post():
     if(request.method == 'GET'):
         return render_template('publicacion.html')
     
+@app.route('/configuracion',methods = ['GET', 'POST'])
+def configuracion():
+    return render_template('configuracion.html')
+@app.route('/perfil',methods = ['GET', 'POST'])
+def profile():
+    return render_template('profile.html')
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')     # open for everyone
+    app.run(host='0.0.0.0',debug=True)     # open for everyone
