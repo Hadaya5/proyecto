@@ -1,6 +1,7 @@
 {
     "home":"Home",
     "notifications":"notifications",
+    "mngnotifications":"Manage Notifications Settings",
     "configuration":"configuration",
     "welcome":"Welcome, please enjoy your visit",
     "login":"Login",
