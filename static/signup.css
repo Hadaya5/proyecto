@@ -1,0 +1,8 @@
+.date-container{
+    width: 1px;
+    height: 1px;
+}
+ion-popover::part(content) {
+    width: 1%;
+  }
+

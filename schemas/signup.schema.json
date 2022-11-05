@@ -1,0 +1,26 @@
+{
+    "bsonType": "object",
+    "$id": "signup.schema.json",
+    "title": "credential request validator",
+    "required": ["email","password","name","lastname","birthday","gender"],
+    "properties": {
+        "email": {"bsonType": "string"},
+        "password": {
+            "bsonType": "string"
+        },
+        "name": {
+            "bsonType": "string"
+        },
+        "lastname": {
+            "bsonType": "string"
+        },
+        "birthday": {
+            "bsonType": "string"
+        },
+        "gender": {
+            "bsonType": "string",
+            "pattern": "[w,m]{1}"
+        }
+    }
+
+}

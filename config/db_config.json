@@ -1,0 +1,7 @@
+{
+    "user":"root",
+    "password":"password",
+    "host":"mongo",
+    "port":"27017",
+    "database":"atinet"
+}

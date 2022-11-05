@@ -12,30 +12,8 @@
 </head>
 <body>
     <ion-app>
-        <ion-header>
-            <ion-toolbar color="dark">
-                <ion-title>
-                    ATInet
-                </ion-title>
-                <ion-buttons slot="end">
-                    <ion-button >
-                        <p>Inicio</p>
-                    </ion-button>
-                    <ion-button >
-                        <p>Sobre nosotros</p>
-                    </ion-button>
-                    <ion-button >
-                        <p>condiciones generales</p>
-                    </ion-button>
-                    <ion-button class="login-button" href="login.html">
-                        Iniciar sesión
-                    </ion-button>
-                    <ion-button class="login-button" href="signUp.html">
-                        Registrarse
-                    </ion-button>
-                </ion-buttons>
-            </ion-toolbar>
-        </ion-header>
+        {% import './macros/toolbar.html' as toolbar %}
+        {{toolbar.toolbar(loged=True,text=text)}}
         <ion-content>
             <ion-grid>
                 <ion-row>
@@ -43,44 +21,51 @@
                         <ion-card>
                             <ion-card-header>
                                 <ion-card-title>
-                                    <p>Configuración</p>
+                                    <p>{{ text['configuration'].capitalize() }}</p>
                                 </ion-card-title>
                             </ion-card-header>
                             <ion-card-content>
                                 <ion-item>
                                     <ion-label position="floating">
-                                        Editar nombre y apellido
+                                        {{text['edit'] + ' ' + text['name'].lower() }}
                                         <ion-icon name="person-outline"></ion-icon>
                                     </ion-label>
-                                    <ion-input value="Nombre Apellido" type="text"></ion-input>
+                                    <ion-input value="" type="text"></ion-input>
                                 </ion-item>
                                 <ion-item>
                                     <ion-label position="floating">
-                                        Editar correo
+                                        {{text['edit'] + ' ' + text['lastname'].lower() }}
+                                        <ion-icon name="person-outline"></ion-icon>
+                                    </ion-label>
+                                    <ion-input value="" type="text"></ion-input>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label position="floating">
+                                        {{text['edit'] + ' ' + text['email'].lower() }}
                                         <ion-icon name="mail-outline"></ion-icon>
                                     </ion-label>
-                                    <ion-input value="Correo" type="email"></ion-input>
+                                    <ion-input value="" type="email"></ion-input>
                                 </ion-item>
 
                                 <ion-item>
                                     <ion-label position="floating">
-                                        Lenguaje
+                                        {{text['language']}}
                                         <ion-icon name="globe-outline"></ion-icon>
                                     </ion-label>
-                                    <ion-select placeholder="Español">
-                                        <ion-select placeholder="Idioma" [multiple]="false">
-                                            <ion-select-option value="espanol">Español</ion-select-option>
-                                            <ion-select-option value="ingles">English</ion-select-option>
+                                    <ion-select id="selectLanguage" placeholder="Español" value="{{lang}}">
+                                        <ion-select placeholder="Idioma" multiple="false">
+                                            <ion-select-option value="es">Español</ion-select-option>
+                                            <ion-select-option value="en">English</ion-select-option>
                                         </ion-select>
                                     </ion-select>
                                 </ion-item>
 
                                 <ion-item href="#" detail="true">
-                                        Bloqueos
+                                        {{text['blocked']}}
                                 </ion-item>
 
                                 <ion-item href="#" detail="true">
-                                        Gestionar notificaciones
+                                        {{text['notifications'].capitalize()}}
                                 </ion-item>
 
                             </ion-card-content>
@@ -91,4 +76,5 @@
         </ion-content>
     </ion-app>
 </body>
+<script src="{{ url_for('static', filename='scripts/config.js') }}"></script>
 </html>

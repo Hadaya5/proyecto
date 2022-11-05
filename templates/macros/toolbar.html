@@ -1,5 +1,5 @@
 
-{% macro toolbar(loged=False) -%}
+{% macro toolbar(text,loged=False) -%}
 
 <style>
 
@@ -23,11 +23,6 @@
 </style>
 {% import './macros/menus.html' as menus %}
 {% import './macros/headers.html' as headers %}
-{{menus.main() }}
-{% if loged  %}
-{{headers.loged()}}
-{% else %}
-{{headers.header()}}
-
-{% endif %}
+{{menus.main(text=text) }}
+{{headers.header(text,loged)}}
 {%- endmacro %}

@@ -1,0 +1,33 @@
+{
+    "home":"Home",
+    "notifications":"notifications",
+    "configuration":"configuration",
+    "welcome":"Welcome, please enjoy your visit",
+    "login":"Login",
+    "email":"Email",
+    "password":"Password",
+    "forgotpassword":"forgot password?",
+    "signup":"Sign up",
+    "404":"Page not found",
+    "aboutus":"about",
+    "terms":"Terms and conditions",
+    "name":"Name",
+    "lastname":"Lastname",
+    "confirmpassword":"Confirm password",
+    "women":"Women",
+    "man":"Man",
+    "invalidemail":"Invalid email",
+    "passwordshort":"Password to short",
+    "passwordnotmatch":"Passwords do not match",
+    "notempty":"This field cannot be empty",
+    "emailused":"Email not available",
+    "mustlogin":"You must login to access this page",
+    "signupsuccess":"Welcome to atinet",
+    "pleaselogin":"Please log in now",
+    "logout":"logout",
+    "language":"Language",
+    "edit":"Edit",
+    "blocked":"Blocked contacts"
+
+
+}

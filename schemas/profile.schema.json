@@ -1,0 +1,13 @@
+{
+    "bsonType": "object",
+    "$id": "profile.schema.json",
+    "title": "User profile",
+    "required": ["email","password","name","lastname","birthday","gender"],
+    "properties": {
+        "icon": {"bsonType": "string"},
+        "cover": {
+            "bsonType": "string"
+        }
+    }
+
+}

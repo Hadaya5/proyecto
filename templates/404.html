@@ -8,7 +8,7 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
-    <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='404.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='toolbar.css')}}">
 
 </head>
@@ -17,20 +17,7 @@
         {% import './macros/toolbar.html' as toolbar %}
         {{toolbar.toolbar(text)}}
         <ion-content>
-            <ion-grid>
-                <ion-row>
-                    <ion-col offset-xs="0" size-xs="12" offset-md="1" size-md="4">
-                        <ion-img src="{{url_for('static', filename='images/home.jpg')}}">
-
-                        </ion-img>   
-                    </ion-col>
-                    <ion-col offset-xs="0" size-xs="12" offset-md=2 size-md="5">
-                        <h1>{{ text['welcome']}}</h1>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
+        <h1>{{ text['404'] }}</h1>
         </ion-content>
-    </div>
     </ion-app>
 </body>
-</html>

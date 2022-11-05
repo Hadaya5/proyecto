@@ -1,0 +1,5 @@
+#buttonShowPassword{
+    display: flex;
+    position: relative;
+    top: 50%;
+}

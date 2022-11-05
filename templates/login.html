@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prueba de ionic</title>
+    <title>{{ text['login'] }}</title>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
 </head>
 <body>
     <ion-app>
         {% import './macros/toolbar.html' as toolbar %}
-        {{toolbar.toolbar()}}
+        {{toolbar.toolbar(loged=False,text=text)}}
         <ion-content>
             <ion-grid>
                 <ion-row>
@@ -21,35 +22,50 @@
                         <ion-card>
                             <ion-card-header>
                                 <ion-card-title>
-                                    <p>Ingresar</p>
+                                    <p>{{text['login']}}</p>
                                 </ion-card-title>
                             </ion-card-header>
                             <ion-card-content>
                                 <ion-item>
                                     <ion-label position="floating">
-                                        Correo
+                                        {{text['email']}}
                                         <ion-icon name="mail-outline"></ion-icon>
                                     </ion-label>
-                                    <ion-input type="email"></ion-input>
+                                    <ion-input id="emailInput" type="email"></ion-input>
+                                    <ion-note slot="error">{{text['invalidemail']}}</ion-note>
                                 </ion-item>
                                 <ion-item>
                                     <ion-label position="floating">
-                                        Contraseña
+                                        {{text['password']}}
                                         <ion-icon name="key-outline"></ion-icon>
                                     </ion-label>
-                                    <ion-input type="password"></ion-input>
+                                    <ion-input id="passwordInput" type="password">
+                                    </ion-input>
+
+                                    <ion-button
+                                    slot="end"
+                                    fill="clear"
+                                    class="ion-no-margin"
+                                    id="buttonShowPassword"
+                                    onClick="togglePassword()"
+                                    >
+                                    <ion-icon id="iconShowPassword" slot="icon-only" color="medium" name="eye-outline"></ion-icon>
+                                    </ion-button>
+                  
+                                    <ion-note slot="error">{{text['passwordshort']}}</ion-note>
+
                                 </ion-item>
-                                <ion-button class="center-button" color="primary">
-                                    Iniciar sesión
+                                <ion-button onclick="login()" class="center-button" color="primary">
+                                    {{text['login']}}
                                     <ion-icon slot="start" name="log-in-outline"></ion-icon>
                                 </ion-button>
 
                                 <ion-item lines="full" href="#">
-                                    <ion-label id="cambiarContrasena">¿Has olvidado tu contraseña?</ion-label>
+                                    <ion-label id="cambiarContrasena">{{text['forgotpassword']}}</ion-label>
                                 </ion-item>
 
-                                <ion-button class="center-button" color="primary" href="signUp.html">
-                                    Crear cuenta
+                                <ion-button class="center-button" color="primary" href="signup">
+                                    {{text['signup']}}
                                     <ion-icon slot="start" name="log-in-outline"></ion-icon>
                                 </ion-button>
 
@@ -61,5 +77,7 @@
             </ion-grid>
         </ion-content>
     </ion-app>
+
 </body>
+<script src="{{ url_for('static', filename='scripts/login.js') }}"></script>
 </html>

@@ -9,34 +9,12 @@
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
 </head>
 <body>
     <ion-app>
-        <ion-header>
-            <ion-toolbar color="dark">
-                <ion-title href="home.html">
-                    ATInet
-                </ion-title>
-                <ion-buttons slot="end">
-                    <ion-button >
-                        <p>Inicio</p>
-                    </ion-button>
-                    <ion-button >
-                        <p>Sobre nosotros</p>
-                    </ion-button>
-                    <ion-button >
-                        <p>condiciones generales</p>
-                    </ion-button>
-                    <ion-button class="login-button" href="login.html">
-                        Iniciar sesión
-                    </ion-button>
-                    <!--<ion-button class="login-button" >
-                        Registrarse
-                    </ion-button>-->
-
-                </ion-buttons>
-            </ion-toolbar>
-        </ion-header>
+        {% import './macros/toolbar.html' as toolbar %}
+        {{toolbar.toolbar(loged=False,text=text)}}
         <ion-content>
             <ion-grid>
                 <ion-row>
@@ -44,72 +22,106 @@
                         <ion-card>
                             <ion-card-header>
                                 <ion-card-title>
-                                    <p>Registrarse</p>
+                                    <p>{{text['signup']}}</p>
                                 </ion-card-title>
                             </ion-card-header>
 
                             <ion-card-content>
+                                <form id="form" action="/signup" method="post">
                                 <ion-item>
                                     <ion-label position="floating">
-                                        Nombre
+                                        {{text['name']}}
                                     </ion-label>
-                                    <ion-input type="text"></ion-input>
+                                    <ion-input id="nameInput" type="name"></ion-input>
+                                    <ion-note slot="error">{{text['notempty']}}</ion-note>
                                 </ion-item>
 
                                 <ion-item>
                                     <ion-label position="floating">
-                                        Apellido
+                                        {{text['lastname']}}
                                     </ion-label>
-                                    <ion-input type="text"></ion-input>
+                                    <ion-input id="lastNameInput" type="name"></ion-input>
+                                    <ion-note slot="error">{{text['notempty']}}</ion-note>
                                 </ion-item>
 
                                 <ion-item>
                                     <ion-label position="floating">
-                                        Correo
+                                        {{text['email']}}
                                         <ion-icon name="mail-outline"></ion-icon>
                                     </ion-label>
-                                    <ion-input type="email"></ion-input>
+                                    <ion-note id="emailError" slot="error">{{text['invalidemail']}}</ion-note>
+                                    <ion-input id="emailInput" type="email"></ion-input>
                                 </ion-item>
 
                                 <ion-item>
                                     <ion-label position="floating">
-                                        Contraseña
+                                        {{text['password']}}
                                         <ion-icon name="key-outline"></ion-icon>
                                     </ion-label>
-                                    <ion-input type="password"></ion-input>
+                                    <ion-input id="passwordInput" type="password"></ion-input>
+                                    <ion-note slot="error">{{text['passwordshort']}}</ion-note>
                                 </ion-item>
 
                                 <ion-item>
                                     <ion-label position="floating">
-                                        Vuelva a escribir su contraseña
+                                        {{text['confirmpassword']}}
                                         <ion-icon name="key-outline"></ion-icon>
                                     </ion-label>
-                                    <ion-input type="password"></ion-input>
+                                    <ion-input disabled="true" id="confirmPasswordInput" type="password"></ion-input>
+                                    <ion-note slot="error">{{text['passwordnotmatch']}}</ion-note>
                                 </ion-item>
 
-                                <ion-radio-group value="custom-checked">
+                                <ion-radio-group value="w">
                                     <ion-item>
-                                        <ion-label>Mujer</ion-label>
-                                        <ion-radio value="custom-checked"></ion-radio>
+                                        <ion-label>{{text['women']}}</ion-label>
+                                        <ion-radio id="womenRadioInput" value="w"></ion-radio>
                                     </ion-item>
                                     <ion-item>
-                                        <ion-label>Hombre</ion-label>
-                                        <ion-radio value="custom"></ion-radio>
+                                        <ion-label>{{text['man']}}</ion-label>
+                                        <ion-radio id="manRadioInput" value="m"></ion-radio>
                                     </ion-item>
                                 </ion-radio-group>
-
-                                <ion-button class="center-button" color="primary">
-                                    Crear cuenta
+                                <ion-item class="datetime-item">
+                                    <ion-label position="fixed">Date of birth</ion-label>
+                                    <ion-item class="datetime-item">
+                                        <ion-select id="day-select" class="date-select ion-padding" value="selected" placeholder="Day">
+                                            <ion-select-option value="selected"></ion-select-option>
+                                        </ion-select>
+                                        <ion-select id="month-select" class="date-select ion-padding" value="selected" placeholder="Month">
+                                            <ion-select-option value="selected"></ion-select-option>
+                                        </ion-select>
+                                        <ion-select id="year-select" class="date-select ion-padding" value="selected" placeholder="Year">
+                                            <ion-select-option value="selected"></ion-select-option>
+                                        </ion-select>
+                                        <ion-datetime-button style="display: none;" datetime="datetime"></ion-datetime-button>                                        
+                                        <ion-modal>
+                                            <ion-datetime id="datetime" presentation="date"
+                                            locale="en-US"
+                                            prefer-wheel="false"
+                                            show-default-buttons="true"                                       
+                                            ></ion-datetime>   
+                                        </ion-modal>
+                            
+                                    </ion-item>
+                                </ion-item>
+                                <ion-button id="signupButton" type="submit" class="center-button" color="primary" disabled="false">
+                                    {{text['signup']}}
                                     <ion-icon slot="start" name="log-in-outline"></ion-icon>
                                 </ion-button>
-
+                                </form>
                             </ion-card-content>
                         </ion-card>
             
                     </ion-col>
                 </ion-row>
             </ion-grid>
+            <ion-popover>
+                <ion-content class="ion-padding">Hello World!</ion-content>
+              </ion-popover>
         </ion-content>
+
     </ion-app>
 </body>
+<script src="{{ url_for('static', filename='scripts/signup.js') }}"></script>
+
 </html>

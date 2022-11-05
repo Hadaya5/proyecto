@@ -7,15 +7,46 @@
     <title>Document</title>
 </head>
 <body>
-    {% macro main() -%}
+    {% macro main(text) -%}
     <div class="menu">
         <ion-menu type="overlay" content-id="main-content">
             <ion-header>
                 <ion-toolbar>
-                <ion-title>Menu Content</ion-title>
+                <ion-title></ion-title>
                 </ion-toolbar>
             </ion-header>
-            <ion-content class="ion-padding">This is the menu content.</ion-content>
+            <ion-content class="ion-padding">
+                <ion-list>
+                    <ion-menu-toggle>
+                        <ion-item>
+                            <ion-label href="/">
+                                {{ text['home'] }}
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                    <ion-menu-toggle>
+                        <ion-item href="/notifications">
+                            <ion-label>
+                                {{ text['notifications'] }}
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                    <ion-menu-toggle>
+                        <ion-item href="/config">
+                            <ion-label>
+                                {{ text['configuration'] }}
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                    <ion-menu-toggle>
+                        <ion-item href="/logout">
+                            <ion-label>
+                                {{ text['logout'] }}
+                            </ion-label>
+                        </ion-item>  
+                    </ion-menu-toggle>
+                </ion-list>
+            </ion-content>
           </ion-menu>
     </div>
     {%- endmacro %}

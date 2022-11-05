@@ -1,65 +1,53 @@
-{% macro header() -%}
+{% macro header(text,loged=False) -%}
 <div class="ion-page" id = "main-content">
     <ion-header>
         <ion-toolbar color="dark">
-            <ion-buttons id="toolbar-menu-button" >
+            <ion-buttons slot="start" id="toolbar-menu-button" >
                 <ion-menu-button></ion-menu-button>
             </ion-buttons>
+            {% if loged %}
+            <ion-item color="dark" slot="start">
+                <ion-searchbar placeholder="Buscar" slot="start" animated="true"></ion-searchbar>
+            </ion-item>
+            {% else %}
             <ion-title slot="end">
                 ATInet
             </ion-title>
+            {% endif %}
             <ion-buttons id="toolbar-buttons" slot="end">
 
+                <ion-button href="/">
+                    <p>{{text['home']}}</p>
+                </ion-button>
+                {% if not loged %}
                 <ion-button >
-                    <p>Inicio</p>
+                    <p>{{text['aboutus']}}</p>
                 </ion-button>
                 <ion-button >
-                    <p>Sobre nosotros</p>
+                    <p>{{text['terms']}}</p>
                 </ion-button>
-                <ion-button >
-                    <p>condiciones generales</p>
+                <ion-button class="login-button" href="login">
+                    {{text['login']}}
                 </ion-button>
-                <ion-button class="login-button" href="login.html">
-                    Iniciar sesión
+                <ion-button class="login-button" href="signup">
+                    {{text['signup']}}
                 </ion-button>
-                <ion-button class="login-button" href="signUp.html">
-                    Registrarse
+                {% else %}
+                <ion-button href="/notifications">
+                    <p>Notificaciones</p>
                 </ion-button>
+                <ion-button href="/config">
+                    <p>Configuracion</p>
+                </ion-button>
+                <ion-button class="login-button" href="/logout">
+                    {{text['logout']}}
+                </ion-button>
+
+                {% endif %}
+    
 
             </ion-buttons>
         </ion-toolbar>
     </ion-header>
-
-{%- endmacro %}
-
-{% macro loged() -%}
-
-<ion-header>
-    <ion-toolbar color="dark">
-
-        <ion-buttons slot="start" id="toolbar-menu-button" >
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-item color="dark" slot="start">
-            <ion-searchbar placeholder="Buscar" slot="start" animated="true"></ion-searchbar>
-        </ion-item>
-
-        <ion-buttons id="toolbar-buttons" slot="end">
-            <ion-button >
-                <p>Inicio</p>
-            </ion-button>
-            <ion-button >
-                <p>Sobre nosotros</p>
-            </ion-button>
-            <ion-button >
-                <p>Notificaciones</p>
-            </ion-button>
-            <ion-button >
-                <p>Configuracion</p>
-            </ion-button>
-
-        </ion-buttons>
-    </ion-toolbar>
-</ion-header>
 
 {%- endmacro %}
