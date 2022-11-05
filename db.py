@@ -17,6 +17,7 @@ def eprint(*args, **kwargs):
 def get_database():
  
     CONNECTION_STRING = f"mongodb://{db_config['user']}:{db_config['password']}@{db_config['host']}:{db_config['port']}/{db_config['database']}?authSource=admin"
+    eprint(CONNECTION_STRING)
     client = MongoClient(CONNECTION_STRING,serverSelectionTimeoutMS=1000)
     return client[db_config['database']]
 def checkToken(token):
