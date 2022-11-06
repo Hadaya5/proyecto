@@ -28,5 +28,14 @@
     "logout":"logout",
     "language":"Idioma",
     "edit":"Editar",
-    "blocked":"Bloqueados"
+    "blocked":"Bloqueados",
+    "publish":"Publicar",
+    "feed":"Muro",
+    "thinking":"¿Qué estas pensando?",
+    "AddImage":"Añadir Imágen",
+    "config":"Configuración",
+    "profile":"Perfil",
+    "publication":"Publicación",
+    "users":"Usuarios",
+    "test":"Texto de Prueba"
 }

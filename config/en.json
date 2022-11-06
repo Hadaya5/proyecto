@@ -28,6 +28,15 @@
     "logout":"logout",
     "language":"Language",
     "edit":"Edit",
-    "blocked":"Blocked contacts"
+    "blocked":"Blocked contacts",
+    "publish":"Publish",
+    "feed":"Feed",
+    "thinking":"What are u thinking about?",
+    "AddImage":"Add Image",
+    "config":"Config",
+    "profile":"Profile",
+    "publication":"Publication",
+    "users":"Users",
+    "test":"Test Text"
 
 }
