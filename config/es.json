@@ -37,5 +37,10 @@
     "profile":"Perfil",
     "publication":"Publicación",
     "users":"Usuarios",
+    "manage":"Gestionar",
+    "silence":"Silenciar",
+    "unsilence":"Desilenciar",
+    "block":"Bloquear",
+    "unblock":"Desbloquear",
     "test":"Texto de Prueba"
 }
