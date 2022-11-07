@@ -1,8 +1,8 @@
 {
     "home":"Home",
-    "notifications":"notifications",
+    "notifications":"Notifications",
     "configuration":"configuration",
-    "welcome":"Welcome, please enjoy your visit",
+    "welcome":"Welcome to the site where you can communicate and enjoy with your friends and family",
     "login":"Login",
     "email":"Email",
     "password":"Password",
@@ -22,11 +22,14 @@
     "notempty":"This field cannot be empty",
     "emailused":"Email not available",
     "mustlogin":"You must login to access this page",
-    "signupsuccess":"Welcome to atinet",
+    "signupsuccess":"Welcome to ATInet",
     "pleaselogin":"Please log in now",
     "logout":"logout",
     "language":"Language",
     "edit":"Edit",
-    "blocked":"Blocked contacts"
-
+    "blocked":"Blocked contacts",
+    "comments":"Comments",
+    "tagged":"tagged you in a post",
+    "commented":"commented your post",
+    "liked":"liked your post"
 }

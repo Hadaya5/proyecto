@@ -1,5 +1,7 @@
 :root {
 	--ion-background-color: #eee;
+    --ion-color-primary: #2D82B7;
+    --ion-color-secondary: #EB8A8A;
 }
 
 p {
@@ -10,14 +12,14 @@ ion-col {
     top: 50px;
 }
 
-body {
-    background-color: red;
+ion-card {
+    --ion-background-color: #fff;
 }
 
 .login-button{
-    background-color: #d9d9d9;
+    background-color: var(--ion-color-secondary);
     border-radius: 5px;
-    color: black;
+    color: white;
 }
 
 .center-button {
@@ -35,4 +37,53 @@ body {
 ion-avatar {
     height: 60px; 
     width: 60px; 
+}
+
+#comment {
+    padding: 5px;
+}
+
+#border-comment:not(:last-child){
+    border-bottom: 0.1px solid #d9d9d9;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+#comentario {
+    width: 80%;
+    overflow: auto;
+}
+
+@media screen and (min-width: 992px) {
+
+    #comentario, #publicacion {
+        height: 750px;
+    }
+    
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+
+    #comentario, #publicacion {
+        height: 500px;
+    }
+    
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+
+    #comentario, #publicacion {
+        height: 500px;
+        width: 100%;
+    }
+    
+}
+
+@media screen and (max-width: 576px) {
+
+    #comentario {
+        width: 100%;
+    }
+    
 }

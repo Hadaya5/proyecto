@@ -1,12 +1,12 @@
 {% macro header(text,loged=False) -%}
 <div class="ion-page" id = "main-content">
     <ion-header>
-        <ion-toolbar color="dark">
+        <ion-toolbar color="primary">
             <ion-buttons slot="start" id="toolbar-menu-button" >
                 <ion-menu-button></ion-menu-button>
             </ion-buttons>
             {% if loged %}
-            <ion-item color="dark" slot="start">
+            <ion-item color="primary" slot="start">
                 <ion-searchbar placeholder="Buscar" slot="start" animated="true"></ion-searchbar>
             </ion-item>
             {% else %}
