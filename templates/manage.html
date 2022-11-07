@@ -14,7 +14,7 @@
     <ion-app>
         {% import './macros/toolbar.html' as toolbar %}
         {% from './macros/notificacion.html' import notificacion %}
-        {{toolbar.toolbar(text,loged=True)}}
+        {{toolbar.toolbar(text=text,loged=True)}}
         <ion-content>
             <ion-grid>
                 <ion-row>
@@ -35,8 +35,8 @@
                                         <ion-text>
                                           <h1 class="username" ></h1>Hadaya Hadaya</h1>
                                         </ion-text>
-                                        <ion-button disabled="false">{{text['silence']}}</ion-button>
-                                        <ion-button>{{text['block']}}</ion-button>
+                                        <ion-button disabled="false">{{ text['silence'] }}</ion-button>
+                                        <ion-button>{{ text['block'] }}</ion-button>
                                     </ion-item>
 
                                     <ion-item href="#">
@@ -46,8 +46,8 @@
                                         <ion-text>
                                           <h1 class="username" ></h1>Luz Rico</h1>
                                         </ion-text>
-                                        <ion-button disabled="true">{{text['unsilence']}}</ion-button>
-                                        <ion-button>{{text['block']}}</ion-button>
+                                        <ion-button disabled="true">{{ text['unsilence'] }}</ion-button>
+                                        <ion-button>{{ text['block'] }}</ion-button>
                                     </ion-item>
 
                                     <ion-item href="#">
@@ -57,8 +57,8 @@
                                         <ion-text>
                                           <h1 class="username" ></h1>David Sanchez</h1>
                                         </ion-text>
-                                        <ion-button disabled="false">{{text['silence']}}</ion-button>
-                                        <ion-button disabled="true">{{text['unblock']}}</ion-button>
+                                        <ion-button disabled="false">{{ text['silence'] }}</ion-button>
+                                        <ion-button disabled="true">{{ text['unblock'] }}</ion-button>
                                     </ion-item>
 
                                     <ion-item href="#">
@@ -68,8 +68,8 @@
                                         <ion-text>
                                           <h1 class="username" ></h1>Luis Peña</h1>
                                         </ion-text>
-                                        <ion-button disabled="false">{{text['unsilence']}}</ion-button>
-                                        <ion-button>{{text['unblock']}}</ion-button>
+                                        <ion-button disabled="false">{{ text['unsilence'] }}</ion-button>
+                                        <ion-button>{{ text['unblock'] }}</ion-button>
                                     </ion-item>
                                 </ion-list>
 
