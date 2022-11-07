@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ text['notifications'] }}</title>
+    <title>{{ text['manage'] }}</title>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
@@ -22,38 +22,54 @@
                         <ion-card>
                             <ion-card-header>
                                 <ion-card-title>
-                                    <p>{{text['notifications']}}</p>
+                                    <p>Manage Users</p>
                                 </ion-card-title>
                             </ion-card-header>
                             <ion-card-content>
                                 <ion-list>
-                                    {{ notificacion(text) }}
+                                    
                                     <ion-item href="#">
                                         <ion-avatar slot="start">
                                         <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
                                         </ion-avatar>
-                                        <ion-label>Hadaya Hadaya {{text['commented']}}</ion-label>
+                                        <ion-text>
+                                          <h1 class="username" ></h1>Hadaya Hadaya</h1>
+                                        </ion-text>
+                                        <ion-button disabled="false">{{text['silence']}}</ion-button>
+                                        <ion-button>{{text['block']}}</ion-button>
                                     </ion-item>
 
                                     <ion-item href="#">
                                         <ion-avatar slot="start">
                                         <img alt="Silhouette of a person's head" src="../static/images/luz.jpg" />
                                         </ion-avatar>
-                                        <ion-label>Luz Rico {{text['liked']}}</ion-label>
+                                        <ion-text>
+                                          <h1 class="username" ></h1>Luz Rico</h1>
+                                        </ion-text>
+                                        <ion-button disabled="true">{{text['unsilence']}}</ion-button>
+                                        <ion-button>{{text['block']}}</ion-button>
                                     </ion-item>
 
                                     <ion-item href="#">
                                         <ion-avatar slot="start">
                                         <img alt="Silhouette of a person's head" src="../static/images/david.jpg" />
                                         </ion-avatar>
-                                        <ion-label>David Sanchez {{text['commented']}}</ion-label>
+                                        <ion-text>
+                                          <h1 class="username" ></h1>David Sanchez</h1>
+                                        </ion-text>
+                                        <ion-button disabled="false">{{text['silence']}}</ion-button>
+                                        <ion-button disabled="true">{{text['unblock']}}</ion-button>
                                     </ion-item>
 
                                     <ion-item href="#">
                                         <ion-avatar slot="start">
                                         <img alt="Silhouette of a person's head" src="../static/images/luis.jpg" />
                                         </ion-avatar>
-                                        <ion-label>Luis Peña {{text['liked']}}</ion-label>
+                                        <ion-text>
+                                          <h1 class="username" ></h1>Luis Peña</h1>
+                                        </ion-text>
+                                        <ion-button disabled="false">{{text['unsilence']}}</ion-button>
+                                        <ion-button>{{text['unblock']}}</ion-button>
                                     </ion-item>
                                 </ion-list>
 

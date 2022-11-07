@@ -15,7 +15,19 @@
             </ion-title>
             {% endif %}
             <ion-buttons id="toolbar-buttons" slot="end">
-
+                
+                <!--
+                {% if loged %}
+                <ion-button href="muro">
+                    <p>{{text['test']}}</p>
+                </ion-button>
+                {% else %}
+                <ion-button href="/">
+                    <p>{{text['home']}}</p>
+                </ion-button>
+                {% endif %}
+                -->
+                
                 <ion-button href="/">
                     <p>{{text['home']}}</p>
                 </ion-button>
@@ -33,6 +45,11 @@
                     {{text['signup']}}
                 </ion-button>
                 {% else %}
+                <!--
+                <ion-button href="/muro">
+                    <p>{{text['feed']}}</p>
+                </ion-button>
+                -->
                 <ion-button href="/notifications">
                     <p>{{text['notifications']}}</p>
                 </ion-button>

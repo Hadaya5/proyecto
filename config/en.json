@@ -1,6 +1,7 @@
 {
     "home":"Home",
     "notifications":"Notifications",
+    "mngnotifications":"Manage Notifications Settings",
     "configuration":"configuration",
     "welcome":"Welcome to the site where you can communicate and enjoy with your friends and family",
     "login":"Login",
@@ -31,5 +32,20 @@
     "comments":"Comments",
     "tagged":"tagged you in a post",
     "commented":"commented your post",
-    "liked":"liked your post"
+    "liked":"liked your post",
+    "publish":"Publish",
+    "feed":"Feed",
+    "thinking":"What are u thinking about?",
+    "AddImage":"Add Image",
+    "config":"Config",
+    "profile":"Profile",
+    "publication":"Publication",
+    "users":"Users",
+    "manage":"Manage",
+    "silence":"Silence",
+    "unsilence":"Unsilence",
+    "block":"Block",
+    "unblock":"Unblock",
+    "test":"Test Text"
+
 }

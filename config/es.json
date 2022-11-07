@@ -1,6 +1,7 @@
 {
     "home":"Inicio",
     "notifications":"Notificaciones",
+    "mngnotifications":"Gestionar Configuracion de Notificaciones",
     "configuration":"Configuracion",
     "welcome":"Bienvenido al sitio donde podrás comunicarte y disfrutar con tus amigos y familiares",
     "login":"Ingresar",
@@ -31,5 +32,19 @@
     "comments":"Comentarios",
     "tagged":"te etiquetó en su publicación",
     "commented":"comento tu publicación",
-    "liked":"le gustó tu publicación"
+    "liked":"le gustó tu publicación",
+    "publish":"Publicar",
+    "feed":"Muro",
+    "thinking":"¿Qué estas pensando?",
+    "AddImage":"Añadir Imágen",
+    "config":"Configuración",
+    "profile":"Perfil",
+    "publication":"Publicación",
+    "users":"Usuarios",
+    "manage":"Gestionar",
+    "silence":"Silenciar",
+    "unsilence":"Desilenciar",
+    "block":"Bloquear",
+    "unblock":"Desbloquear",
+    "test":"Texto de Prueba"
 }
