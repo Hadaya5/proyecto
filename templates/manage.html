@@ -22,54 +22,145 @@
                         <ion-card>
                             <ion-card-header>
                                 <ion-card-title>
-                                    <p>Manage Users</p>
+                                    <p>{{ text['manageusers'] }}</p>
                                 </ion-card-title>
                             </ion-card-header>
                             <ion-card-content>
                                 <ion-list>
                                     
                                     <ion-item href="#">
-                                        <ion-avatar slot="start">
-                                        <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
-                                        </ion-avatar>
-                                        <ion-text>
-                                          <h1 class="username" ></h1>Hadaya Hadaya</h1>
-                                        </ion-text>
-                                        <ion-button disabled="false">{{ text['silence'] }}</ion-button>
-                                        <ion-button>{{ text['block'] }}</ion-button>
+                                        <ion-item-sliding>
+                                            <ion-item-options side="start">
+                                              <ion-item-option color="success">
+                                                <ion-icon slot="top" name="archive"></ion-icon>
+                                                {{ text['hide'] }}
+                                              </ion-item-option>
+                                            </ion-item-options>
+                                        
+                                            <ion-item>
+                                                <ion-avatar slot="start">
+                                                    <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
+                                                    </ion-avatar>
+                                                    <ion-text>
+                                                      <h1 class="username" ></h1>Hadaya Hadaya</h1>
+                                                    </ion-text>
+                                            </ion-item>
+                                        
+                                            <ion-item-options>
+                                              <ion-item-option>
+                                                <ion-icon slot="top" name="notifications-outline"></ion-icon>
+                                                {{ text['silence'] }}
+                                              </ion-item-option>
+                                              <ion-item-option color="danger">
+                                                <ion-icon slot="top" name="person-remove-outline"></ion-icon>
+                                                {{ text['block'] }}
+                                              </ion-item-option>
+                                            </ion-item-options>
+                                          </ion-item-sliding>
+
+                                        <!--
+                                        <ion-button disabled="false"><ion-icon slot="start" name="notifications-outline"></ion-icon>{{ text['silence'] }}</ion-button>
+                                        <ion-button><ion-icon slot="start" name="person-remove-outline"></ion-icon>{{ text['block'] }}</ion-button>
+                                        -->
                                     </ion-item>
 
                                     <ion-item href="#">
-                                        <ion-avatar slot="start">
-                                        <img alt="Silhouette of a person's head" src="../static/images/luz.jpg" />
-                                        </ion-avatar>
-                                        <ion-text>
-                                          <h1 class="username" ></h1>Luz Rico</h1>
-                                        </ion-text>
-                                        <ion-button disabled="true">{{ text['unsilence'] }}</ion-button>
-                                        <ion-button>{{ text['block'] }}</ion-button>
+
+                                        <ion-item-sliding>
+                                            <ion-item-options side="start">
+                                              <ion-item-option color="success">
+                                                <ion-icon slot="top" name="archive"></ion-icon>
+                                                {{ text['hide'] }}
+                                              </ion-item-option>
+                                            </ion-item-options>
+                                        
+                                            <ion-item>
+                                                <ion-avatar slot="start">
+                                                    <img alt="Silhouette of a person's head" src="../static/images/luz.jpg" />
+                                                    </ion-avatar>
+                                                    <ion-text>
+                                                      <h1 class="username" ></h1>Luz Rico</h1>
+                                                    </ion-text>
+                                            </ion-item>
+                                        
+                                            <ion-item-options>
+                                              <ion-item-option>
+                                                <ion-icon slot="top" name="notifications-outline"></ion-icon>
+                                                {{ text['silence'] }}
+                                              </ion-item-option>
+                                              <ion-item-option color="danger">
+                                                <ion-icon slot="top" name="person-remove-outline"></ion-icon>
+                                                {{ text['unblock'] }}
+                                              </ion-item-option>
+                                            </ion-item-options>
+                                          </ion-item-sliding>
+
                                     </ion-item>
 
                                     <ion-item href="#">
-                                        <ion-avatar slot="start">
-                                        <img alt="Silhouette of a person's head" src="../static/images/david.jpg" />
-                                        </ion-avatar>
-                                        <ion-text>
-                                          <h1 class="username" ></h1>David Sanchez</h1>
-                                        </ion-text>
-                                        <ion-button disabled="false">{{ text['silence'] }}</ion-button>
-                                        <ion-button disabled="true">{{ text['unblock'] }}</ion-button>
+
+                                        <ion-item-sliding>
+                                            <ion-item-options side="start">
+                                              <ion-item-option color="success">
+                                                <ion-icon slot="top" name="archive"></ion-icon>
+                                                {{ text['hide'] }}
+                                              </ion-item-option>
+                                            </ion-item-options>
+                                        
+                                            <ion-item>
+                                                <ion-avatar slot="start">
+                                                    <img alt="Silhouette of a person's head" src="../static/images/david.jpg" />
+                                                    </ion-avatar>
+                                                    <ion-text>
+                                                      <h1 class="username" ></h1>David Sanchez</h1>
+                                                    </ion-text>
+                                            </ion-item>
+                                        
+                                            <ion-item-options>
+                                              <ion-item-option>
+                                                <ion-icon slot="top" name="notifications-off-outline"></ion-icon>
+                                                {{ text['unsilence'] }}
+                                              </ion-item-option>
+                                              <ion-item-option color="danger">
+                                                <ion-icon slot="top" name="person-remove-outline"></ion-icon>
+                                                {{ text['block'] }}
+                                              </ion-item-option>
+                                            </ion-item-options>
+                                          </ion-item-sliding>
+
                                     </ion-item>
 
                                     <ion-item href="#">
-                                        <ion-avatar slot="start">
-                                        <img alt="Silhouette of a person's head" src="../static/images/luis.jpg" />
-                                        </ion-avatar>
-                                        <ion-text>
-                                          <h1 class="username" ></h1>Luis Peña</h1>
-                                        </ion-text>
-                                        <ion-button disabled="false">{{ text['unsilence'] }}</ion-button>
-                                        <ion-button>{{ text['unblock'] }}</ion-button>
+
+                                        <ion-item-sliding>
+                                            <ion-item-options side="start">
+                                              <ion-item-option color="success">
+                                                <ion-icon slot="top" name="archive"></ion-icon>
+                                                {{ text['hide'] }}
+                                              </ion-item-option>
+                                            </ion-item-options>
+                                        
+                                            <ion-item>
+                                                <ion-avatar slot="start">
+                                                    <img alt="Silhouette of a person's head" src="../static/images/luis.jpg" />
+                                                    </ion-avatar>
+                                                    <ion-text>
+                                                      <h1 class="username" ></h1>Luis Peña</h1>
+                                                    </ion-text>
+                                            </ion-item>
+                                        
+                                            <ion-item-options>
+                                              <ion-item-option>
+                                                <ion-icon slot="top" name="notifications-off-outline"></ion-icon>
+                                                {{ text['unsilence'] }}
+                                              </ion-item-option>
+                                              <ion-item-option color="danger">
+                                                <ion-icon slot="top" name="person-remove-outline"></ion-icon>
+                                                {{ text['unblock'] }}
+                                              </ion-item-option>
+                                            </ion-item-options>
+                                          </ion-item-sliding>
+
                                     </ion-item>
                                 </ion-list>
 

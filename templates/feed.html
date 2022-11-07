@@ -21,7 +21,7 @@
                 <ion-row>
                     <ion-col style="top: 0px;" id="profile-container" size-xs="12" size-md="8" offset-md="2">
                         <div class="container-portada">
-                            <img class="portada" src="{{ profile['cover'] if profile.get('cover') else url_for('static',filename='images/default/profile_cover.jpg') }}" alt="portada">            
+                                       
                             <div class="profile-item">
                               <ion-row>
                                 <ion-item>
@@ -43,9 +43,11 @@
                                   
                                   <!--<ion-label>¿Qué estas pensando?</ion-label>-->
                                   <ion-textarea placeholder="{{text['thinking']}}" auto-grow="true"
-                                    value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus sem, auctor accumsan egestas sed, venenatis at ex. Nam consequat ex odio, suscipit rhoncus orci dictum eget. Aenean sit amet ligula varius felis facilisis lacinia nec volutpat nulla. Duis ullamcorper sit amet turpis sed blandit. Integer pretium massa eu faucibus interdum.">
+                                    value="Lorem ipsum dolor sit amet.">
                                   </ion-textarea>
-                                  <ion-button disabled="true">{{text['AddImage']}}</ion-button>
+                                  <input type="file">
+                                    <!--<ion-button disabled="false">{{text['AddImage']}}</ion-button>-->
+                                  </input>
                                   <ion-button>{{text['publish']}}</ion-button>
                                 </ion-item>
                                <!--

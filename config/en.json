@@ -42,10 +42,12 @@
     "publication":"Publication",
     "users":"Users",
     "manage":"Manage",
+    "manageusers":"Manage Users",
     "silence":"Silence",
     "unsilence":"Unsilence",
     "block":"Block",
     "unblock":"Unblock",
+    "hide":"Hide",
     "test":"Test Text"
 
 }

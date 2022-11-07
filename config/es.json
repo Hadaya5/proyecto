@@ -42,9 +42,11 @@
     "publication":"Publicación",
     "users":"Usuarios",
     "manage":"Gestionar",
+    "manageusers":"Gestionar Usuarios",
     "silence":"Silenciar",
     "unsilence":"Desilenciar",
     "block":"Bloquear",
     "unblock":"Desbloquear",
+    "hide":"Esconder",
     "test":"Texto de Prueba"
 }
