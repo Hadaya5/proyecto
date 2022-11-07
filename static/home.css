@@ -1,6 +1,55 @@
-h1{
-    font-size: 50px;
-    font-weight: bold;
-}
 :root{
+    --ion-color-primary: #2D82B7;
+}
+
+.login-button{
+    background-color: #3c4048;
+    border-radius: 5px;
+    color: white;
+}
+
+img {
+    margin-top: 60px;
+    border-radius: 20px;
+    box-shadow: 20px 20px 5px #999;
+}
+
+@media screen and (min-width: 1283px) {
+
+    h1 {
+        font-size: 60px;
+        font-weight: bold;
+        margin-top: 45px;
+    }
+    
+}
+
+@media screen and (max-width: 1283px) and (min-width: 1170px) {
+
+    h1 {
+        font-size: 55px;
+        font-weight: bold;
+        margin-top: 45px;
+    }
+    
+}
+
+@media screen and (max-width: 1170px) and (min-width: 1077px) {
+
+    h1 {
+        font-size: 45px;
+        font-weight: bold;
+        margin-top: 45px;
+    }
+    
+}
+
+@media screen and (max-width: 1077px) {
+
+    h1 {
+        font-size: 40px;
+        font-weight: bold;
+        margin-top: 45px;
+    }
+    
 }

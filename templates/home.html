@@ -10,21 +10,23 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
     <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='toolbar.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='footer.css')}}">
 
 </head>
 <body>
     <ion-app>
         {% import './macros/toolbar.html' as toolbar %}
         {{toolbar.toolbar(text)}}
-        <ion-content>
+        {% import './macros/footer.html' as footer %}
+        {{footer.footer(text)}}
+        <ion-content class="background">
             <ion-grid>
                 <ion-row>
-                    <ion-col offset-xs="0" size-xs="12" offset-md="1" size-md="4">
-                        <ion-img src="{{url_for('static', filename='images/home.jpg')}}">
-
-                        </ion-img>   
+                    <ion-col offset-xs="0" size-xs="12" offset-md="1" size-md="5">
+                        <img alt="Personas conectadas a ATInet" src="{{url_for('static', filename='images/home.jpg')}}">
+                        </img>   
                     </ion-col>
-                    <ion-col offset-xs="0" size-xs="12" offset-md=2 size-md="5">
+                    <ion-col offset-xs="0" size-xs="12" offset-md="1" size-md="5">
                         <h1>{{ text['welcome']}}</h1>
                     </ion-col>
                 </ion-row>
