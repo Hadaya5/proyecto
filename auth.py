@@ -20,39 +20,39 @@ argon2 = Argon2(Flask(__name__))
 def sign():
     lang = request.accept_languages.best_match(supported_languages)
     if(request.method == 'GET'):
-        
         return render_template('signup.html',text=text[lang])
-    js = request.json
-    try:
-        validate(js,schemas['signup.schema.json'])
-    except Exception as e:
-        eprint(e)
-        return '{"result":"invalid"}'
+    elif(request.method == 'POST'):
+        js = request.json
+        try:
+            validate(js,schemas['signup.schema.json'])
+        except Exception as e:
+            eprint(e)
+            return '{"result":"invalid"}'
 
-    try:
-        db = get_database()
-    except Exception as e:
+        try:
+            db = get_database()
+        except Exception as e:
+            eprint(e)
+            return '{"result":"error"}'
+        users = db['users']
+        email = js.get('email','')
+        if(users.find_one({'email':email})):
+            return {"result":"emailused",
+                    "message":text[lang]['emailused'] }
+        js['password'] = argon2.generate_password_hash(js['password'])
+        eprint(json.dumps(js,indent=4))
+        e = users.insert_one(js)
+        profile = {"_id":e.inserted_id,"cover":"","icon":""}
+        config = {"_id":e.inserted_id,"language":lang}
+        db['profiles'].insert_one(profile)
+        db['config'].insert_one(config)
         eprint(e)
-        return '{"result":"error"}'
-    users = db['users']
-    email = js.get('email','')
-    if(users.find_one({'email':email})):
-        return {"result":"emailused",
-                "message":text[lang]['emailused'] }
-    js['password'] = argon2.generate_password_hash(js['password'])
-    eprint(json.dumps(js,indent=4))
-    e = users.insert_one(js)
-    profile = {"_id":e.inserted_id,"cover":"","icon":""}
-    config = {"_id":e.inserted_id,"language":lang}
-    db['profiles'].insert_one(profile)
-    db['config'].insert_one(config)
-    eprint(e)
-    response = {
-        "result":"ok",
-        "message":text[lang]['signupsuccess'],
-        "submessage":text[lang]['pleaselogin']
-    }
-    return json.dumps({"result":"ok"})
+        response = {
+            "result":"ok",
+            "message":text[lang]['signupsuccess'],
+            "submessage":text[lang]['pleaselogin']
+        }
+        return json.dumps({"result":"ok"})
 
 
 @auth.route('/login',methods = ['GET', 'POST'])

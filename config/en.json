@@ -1,6 +1,7 @@
 {
     "home":"Home",
     "notifications":"notifications",
+    "mngnotifications":"Manage Notifications Settings",
     "configuration":"configuration",
     "welcome":"Welcome, please enjoy your visit",
     "login":"Login",
@@ -27,6 +28,20 @@
     "logout":"logout",
     "language":"Language",
     "edit":"Edit",
-    "blocked":"Blocked contacts"
+    "blocked":"Blocked contacts",
+    "publish":"Publish",
+    "feed":"Feed",
+    "thinking":"What are u thinking about?",
+    "AddImage":"Add Image",
+    "config":"Config",
+    "profile":"Profile",
+    "publication":"Publication",
+    "users":"Users",
+    "manage":"Manage",
+    "silence":"Silence",
+    "unsilence":"Unsilence",
+    "block":"Block",
+    "unblock":"Unblock",
+    "test":"Test Text"
 
 }

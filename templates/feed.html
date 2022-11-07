@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ text['profile'] }}</title>
+    <title>{{ text['feed'] }}</title>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
@@ -23,15 +23,38 @@
                         <div class="container-portada">
                             <img class="portada" src="{{ profile['cover'] if profile.get('cover') else url_for('static',filename='images/default/profile_cover.jpg') }}" alt="portada">            
                             <div class="profile-item">
-                                <ion-item color="none" lines="none">
-                                    <ion-avatar id="perfil" slot="start">
+                              <ion-row>
+                                <ion-item>
+                                  <!--
+                                  <ion-avatar id="perfil" slot="start">
                                     <img alt="Silhouette of a person's head" src="{{profile.get('icon') if profile.get('icon') else url_for('static',filename='images/default/profile_icon.png') }}" />
                                     </ion-avatar>
                                     <ion-text>
                                         <h1 class="username" >{{user['name'] + ' ' + user['lastname']}}</h1>
                                     </ion-text>
+                                    -->
+                                    
+                                  <ion-avatar slot="start">
+                                    <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
+                                    </ion-avatar>
+                                    <ion-text>
+                                      <h1 class="username" ></h1>Hadaya Hadaya</h1>
+                                    </ion-text>
+                                  
+                                  <!--<ion-label>¿Qué estas pensando?</ion-label>-->
+                                  <ion-textarea placeholder="{{text['thinking']}}" auto-grow="true"
+                                    value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus sem, auctor accumsan egestas sed, venenatis at ex. Nam consequat ex odio, suscipit rhoncus orci dictum eget. Aenean sit amet ligula varius felis facilisis lacinia nec volutpat nulla. Duis ullamcorper sit amet turpis sed blandit. Integer pretium massa eu faucibus interdum.">
+                                  </ion-textarea>
+                                  <ion-button disabled="true">{{text['AddImage']}}</ion-button>
+                                  <ion-button>{{text['publish']}}</ion-button>
                                 </ion-item>
-    
+                               <!--
+                                <ion-item color="none" lines="none">
+                                  
+                                  <!--<ion-button disabled="true">Disabled</ion-button>
+                                </ion-item>
+                                -->
+                              </ion-row>
                             </div>
     
                         </div>

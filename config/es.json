@@ -1,6 +1,7 @@
 {
     "home":"Inicio",
     "notifications":"Notificaciones",
+    "mngnotifications":"Gestionar Configuracion de Notificaciones",
     "configuration":"Configuracion",
     "welcome":"Bienvenido al sitio donde podras comunicarte y disfrutar con tus amigos y familiares",
     "login":"Ingresar",
@@ -27,5 +28,19 @@
     "logout":"logout",
     "language":"Idioma",
     "edit":"Editar",
-    "blocked":"Bloqueados"
+    "blocked":"Bloqueados",
+    "publish":"Publicar",
+    "feed":"Muro",
+    "thinking":"¿Qué estas pensando?",
+    "AddImage":"Añadir Imágen",
+    "config":"Configuración",
+    "profile":"Perfil",
+    "publication":"Publicación",
+    "users":"Usuarios",
+    "manage":"Gestionar",
+    "silence":"Silenciar",
+    "unsilence":"Desilenciar",
+    "block":"Bloquear",
+    "unblock":"Desbloquear",
+    "test":"Texto de Prueba"
 }
