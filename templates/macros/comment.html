@@ -1,0 +1,11 @@
+{% macro comment(text,type,slot='start',name='hadaya hadaya',image='../static/images/hadaya.jpg') -%}
+    <ion-item lines="none">
+        <ion-avatar slot="{{slot}}">
+        <img alt="Silhouette of a person's head" src="{{image}}" />
+        </ion-avatar>
+        <ion-card-subtitle>{{name}}</ion-card-subtitle>
+    </ion-item>
+    <ion-card-content id="border-comment">
+        Lorem ipsum dolor sit amet consectetur.                              
+    </ion-card-content>
+{%- endmacro %}

@@ -61,6 +61,17 @@ def feed():
         profile = getUserProfile(uid)
         lang = getLanguage(uid)
         return render_template('feed.html', text=text[lang], profile = profile, user = user)
+@app.route('/chat',methods = ['GET'])
+def chat():
+    if(request.method == 'GET'):
+        token = request.cookies.get('token','')
+        uid = checkToken(token)
+        if(not uid):
+            return redirect('/')    
+        user = getUser(uid)
+        profile = getUserProfile(uid)
+        lang = getLanguage(uid)
+        return render_template('chat.html', text=text[lang], profile = profile, user = user)
     
 if __name__ == '__main__':
     app.run(host='0.0.0.0',debug=True)     # open for everyone
