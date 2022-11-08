@@ -9,16 +9,20 @@
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
     <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='footer.css')}}">
+
 </head>
 <body>
     <ion-app>
         {% import './macros/toolbar.html' as toolbar %}
         {% from './macros/notificacion.html' import notificacion %}
         {{toolbar.toolbar(text=text,loged=True)}}
+        {% import './macros/footer.html' as footer %}
+        {{footer.footer(text)}}
         <ion-content>
             <ion-grid>
                 <ion-row>
-                    <ion-col size-xs="12" size-md="6" offset-md="3" size-lg="4" offset-lg="4">
+                    <ion-col size-xs="12" size-md="7" offset-md="2.5" size-lg="6" offset-lg="3">
                         <ion-card>
                             <ion-card-header>
                                 <ion-card-title>
@@ -58,10 +62,10 @@
                                             </ion-item-options>
                                           </ion-item-sliding>
 
-                                        <!--
+                                        
                                         <ion-button disabled="false"><ion-icon slot="start" name="notifications-outline"></ion-icon>{{ text['silence'] }}</ion-button>
-                                        <ion-button><ion-icon slot="start" name="person-remove-outline"></ion-icon>{{ text['block'] }}</ion-button>
-                                        -->
+                                        <ion-button color="secondary"><ion-icon slot="start" name="person-remove-outline"></ion-icon>{{ text['block'] }}</ion-button>
+                                        
                                     </ion-item>
 
                                     <ion-item href="#">
@@ -94,7 +98,9 @@
                                               </ion-item-option>
                                             </ion-item-options>
                                           </ion-item-sliding>
-
+                                          <ion-button disabled="false"><ion-icon slot="start" name="notifications-outline"></ion-icon>{{ text['silence'] }}</ion-button>
+                                          <ion-button color="secondary"><ion-icon slot="start" name="person-remove-outline"></ion-icon>{{ text['block'] }}</ion-button>
+                                   
                                     </ion-item>
 
                                     <ion-item href="#">
@@ -127,7 +133,9 @@
                                               </ion-item-option>
                                             </ion-item-options>
                                           </ion-item-sliding>
-
+                                          <ion-button disabled="false"><ion-icon slot="start" name="notifications-outline"></ion-icon>{{ text['silence'] }}</ion-button>
+                                          <ion-button color="secondary"><ion-icon slot="start" name="person-remove-outline"></ion-icon>{{ text['block'] }}</ion-button>
+                                   
                                     </ion-item>
 
                                     <ion-item href="#">
@@ -160,7 +168,9 @@
                                               </ion-item-option>
                                             </ion-item-options>
                                           </ion-item-sliding>
-
+                                          <ion-button disabled="false"><ion-icon slot="start" name="notifications-outline"></ion-icon>{{ text['silence'] }}</ion-button>
+                                          <ion-button color="secondary"><ion-icon slot="start" name="person-remove-outline"></ion-icon>{{ text['block'] }}</ion-button>
+                                   
                                     </ion-item>
                                 </ion-list>
 

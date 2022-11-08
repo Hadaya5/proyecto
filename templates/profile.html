@@ -10,13 +10,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename='footer.css')}}">
 </head>
 <body>
     <ion-app>
         {% import './macros/toolbar.html' as toolbar %}
         {{toolbar.toolbar(loged=True,text=text)}}
+        {% import './macros/footer.html' as footer %}
+        {{footer.footer(text)}}
         <ion-content padding="false">
-
+            <ion-grid>
                 <ion-row>
                     <ion-col style="top: 0px;" id="profile-container" size-xs="12" size-md="8" offset-md="2">
                         <div class="container-portada">

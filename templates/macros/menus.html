@@ -11,35 +11,35 @@
     <div class="menu">
         <ion-menu type="overlay" content-id="main-content">
             <ion-header>
-                <ion-toolbar>
-                <ion-title></ion-title>
+                <ion-toolbar color="primary">
+                <ion-title>Menú</ion-title>
                 </ion-toolbar>
             </ion-header>
-            <ion-content class="ion-padding">
-                <ion-list>
-                    <ion-menu-toggle>
-                        <ion-item>
+            <ion-content class="ion-padding" color="primary">
+                <ion-list color="primary" style="padding: 0">
+                    <ion-menu-toggle color="primary">
+                        <ion-item color="primary">
                             <ion-label href="/">
                                 {{ text['home'] }}
                             </ion-label>
                         </ion-item>
                     </ion-menu-toggle>
                     <ion-menu-toggle>
-                        <ion-item href="/notifications">
+                        <ion-item href="/notifications" color="primary">
                             <ion-label>
                                 {{ text['notifications'] }}
                             </ion-label>
                         </ion-item>
                     </ion-menu-toggle>
                     <ion-menu-toggle>
-                        <ion-item href="/config">
+                        <ion-item href="/config" color="primary">
                             <ion-label>
                                 {{ text['configuration'] }}
                             </ion-label>
                         </ion-item>
                     </ion-menu-toggle>
                     <ion-menu-toggle>
-                        <ion-item href="/logout">
+                        <ion-item href="/logout" color="primary">
                             <ion-label>
                                 {{ text['logout'] }}
                             </ion-label>

@@ -43,7 +43,13 @@ def manage():
     if(request.method == 'GET'):
         lang = request.accept_languages.best_match(supported_languages)  
         return render_template('manage.html',text=text[lang])
-    
+
+@app.route('/aboutus',methods = ['GET'])
+def aboutus():
+    if(request.method == 'GET'):
+        lang = request.accept_languages.best_match(supported_languages)  
+        return render_template('aboutus.html',text=text[lang])
+
 @app.route('/feed',methods = ['GET'])
 def feed():
     if(request.method == 'GET'):

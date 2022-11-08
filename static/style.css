@@ -2,6 +2,8 @@
 	--ion-background-color: #eee;
     --ion-color-primary: #2D82B7;
     --ion-color-secondary: #3c4048;
+    --ion-color-tertiary: #fff;
+    --ion-color-tertiary-contrast: #000;
 }
 
 p {

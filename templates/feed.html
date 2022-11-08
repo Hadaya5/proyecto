@@ -15,6 +15,8 @@
     <ion-app>
         {% import './macros/toolbar.html' as toolbar %}
         {{toolbar.toolbar(loged=True,text=text)}}
+        {% import './macros/footer.html' as footer %}
+        {{footer.footer(text)}}
         <ion-content padding="false">
 
             <ion-grid>
@@ -24,7 +26,7 @@
                                        
                             <div class="profile-item">
                               <ion-row>
-                                <ion-item>
+                                <ion-item color="tertiary">
                                   <!--
                                   <ion-avatar id="perfil" slot="start">
                                     <img alt="Silhouette of a person's head" src="{{profile.get('icon') if profile.get('icon') else url_for('static',filename='images/default/profile_icon.png') }}" />
@@ -43,12 +45,12 @@
                                   
                                   <!--<ion-label>¿Qué estas pensando?</ion-label>-->
                                   <ion-textarea placeholder="{{text['thinking']}}" auto-grow="true"
-                                    value="Lorem ipsum dolor sit amet.">
+                                    value="" style="width: 250px;">
                                   </ion-textarea>
                                   <input type="file">
-                                    <!--<ion-button disabled="false">{{text['AddImage']}}</ion-button>-->
-                                  </input>
-                                  <ion-button>{{text['publish']}}</ion-button>
+                                    <!--<ion-button disabled="false">{{text['AddImage']}}</ion-button>
+                                  </input>-->
+                                  <ion-button style="margin-top: 70px;">{{text['publish']}}</ion-button>
                                 </ion-item>
                                <!--
                                 <ion-item color="none" lines="none">
@@ -64,55 +66,308 @@
                     </ion-col>
                 </ion-row>
 
-                <ion-row>
-                    <ion-col size-xs="12" size-sm="8" size-md="6" offset-md="4" offset-sm="2" offset-lg="4">
-                    </ion-col>
-                </ion-row>
-
-                <ion-row>
-                    <ion-col  size-xs="12" size-sm="8" size-md="5"  offset-sm="2" offset-md="3">
+                  <div id="fila">
+                    <ion-row style="margin-top: 55px;">
+                        <ion-col size-xs="12" size-sm="6" size-md="5" offset-sm="" offset-md="1.5">
+                            
+                            <ion-card id="publicacion">
+                                <ion-card-header>
+                                    <ion-item lines="none">
+                                        <ion-avatar slot="start">
+                                        <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
+                                        </ion-avatar>
+                                        <ion-card-title>Hadaya Hadaya</ion-card-title>
+                                        <h1></h1>
+                                    </ion-item>
+                                </ion-card-header>
+                              
+                                <ion-card-content>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad omnis sequi quisquam nostrum aperiam unde nihil sed quasi? Tempore porro vero dicta incidunt facere magnam, dolor quidem? At, enim earum.
+                                    <img class="media" alt="Silhouette of a person's head" src="../static/images/hadaya.jpg"/>
+                                </ion-card-content>
+                              </ion-card>
+                        </ion-col>
                         
-                        <ion-card>
-                            <ion-card-header>
-                                <ion-item lines="none">
-                                    <ion-avatar slot="start">
-                                    <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
-                                    </ion-avatar>
-                                    <ion-card-title>Hadaya Hadaya</ion-card-title>
-                                    <h1></h1>
-                                </ion-item>
-                            </ion-card-header>
-                          
-                            <ion-card-content>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad omnis sequi quisquam nostrum aperiam unde nihil sed quasi? Tempore porro vero dicta incidunt facere magnam, dolor quidem? At, enim earum.
-                                <img class="media" alt="Silhouette of a person's head" src="../static/images/hadaya.jpg"/>
-                            </ion-card-content>
-                          </ion-card>
-                    </ion-col>
-                </ion-row>
-
-                <ion-row>
-                    <ion-col  size-xs="12" size-sm="8" size-md="5"  offset-sm="2" offset-md="3">
-                        
-                        <ion-card>
-                            <ion-card-header>
-                                <ion-item lines="none">
-                                    <ion-avatar slot="start">
-                                    <img alt="Silhouette of a person's head" src="../static/images/david.jpg" />
-                                    </ion-avatar>
-                                    <ion-card-title>David Sanchez</ion-card-title>
-                                    <h1></h1>
-                                </ion-item>
-                            </ion-card-header>
-                          
-                            <ion-card-content>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad omnis sequi quisquam nostrum aperiam unde nihil sed quasi? Tempore porro vero dicta incidunt facere magnam, dolor quidem? At, enim earum.
-                                <img class="media" alt="Silhouette of a person's head" src="../static/images/david.jpg"/>
-                            </ion-card-content>
-                          </ion-card>
-                    </ion-col>
-                </ion-row>
-
+                        <ion-col size-xs="12" size-sm="6" size-md="5">
+                            
+                            <ion-card id="comentario">
+                                <h3 style="text-align: center;" >{{text['comments']}}</h3>
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-avatar slot="start">
+                                        <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
+                                        </ion-avatar>
+                                        <ion-card-subtitle>Hadaya Hadaya</ion-card-subtitle>
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                              
+                                </ion-card-content>
+        
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-card-subtitle slot="end">David Sanchez</ion-card-subtitle>
+                                        <ion-avatar slot="end">
+                                        <img alt="Silhouette of a person's head" src="../static/images/david.jpg" />
+                                        </ion-avatar>
+                                        
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                            
+                                </ion-card-content>
+        
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-avatar slot="start">
+                                        <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
+                                        </ion-avatar>
+                                        <ion-card-subtitle>Hadaya Hadaya</ion-card-subtitle>
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                              
+                                </ion-card-content>
+        
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-card-subtitle slot="end">David Sanchez</ion-card-subtitle>
+                                        <ion-avatar slot="end">
+                                        <img alt="Silhouette of a person's head" src="../static/images/david.jpg" />
+                                        </ion-avatar>
+                                        
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                            
+                                </ion-card-content>
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-avatar slot="start">
+                                        <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
+                                        </ion-avatar>
+                                        <ion-card-subtitle>Hadaya Hadaya</ion-card-subtitle>
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                              
+                                </ion-card-content>
+        
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-card-subtitle slot="end">David Sanchez</ion-card-subtitle>
+                                        <ion-avatar slot="end">
+                                        <img alt="Silhouette of a person's head" src="../static/images/david.jpg" />
+                                        </ion-avatar>
+                                        
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                            
+                                </ion-card-content>
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-avatar slot="start">
+                                        <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
+                                        </ion-avatar>
+                                        <ion-card-subtitle>Hadaya Hadaya</ion-card-subtitle>
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                              
+                                </ion-card-content>
+        
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-card-subtitle slot="end">David Sanchez</ion-card-subtitle>
+                                        <ion-avatar slot="end">
+                                        <img alt="Silhouette of a person's head" src="../static/images/david.jpg" />
+                                        </ion-avatar>
+                                        
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                            
+                                </ion-card-content>
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-avatar slot="start">
+                                        <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
+                                        </ion-avatar>
+                                        <ion-card-subtitle>Hadaya Hadaya</ion-card-subtitle>
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                              
+                                </ion-card-content>
+        
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-card-subtitle slot="end">David Sanchez</ion-card-subtitle>
+                                        <ion-avatar slot="end">
+                                        <img alt="Silhouette of a person's head" src="../static/images/david.jpg" />
+                                        </ion-avatar>
+                                        
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                            
+                                </ion-card-content>
+                                
+                              </ion-card>
+                        </ion-col>
+        
+                    </ion-row>
+                </div>
+                    <ion-row>
+                        <ion-col size-xs="12" size-sm="6" size-md="5" offset-sm="" offset-md="1.5">
+                            
+                            <ion-card id="publicacion">
+                                <ion-card-header>
+                                    <ion-item lines="none">
+                                        <ion-avatar slot="start">
+                                        <img alt="Silhouette of a person's head" src="../static/images/david.jpg" />
+                                        </ion-avatar>
+                                        <ion-card-title>David Sanchez</ion-card-title>
+                                        <h1></h1>
+                                    </ion-item>
+                                </ion-card-header>
+                              
+                                <ion-card-content>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad omnis sequi quisquam nostrum aperiam unde nihil sed quasi? Tempore porro vero dicta incidunt facere magnam, dolor quidem? At, enim earum.
+                                    <img class="media" alt="Silhouette of a person's head" src="../static/images/david.jpg"/>
+                                </ion-card-content>
+                              </ion-card>
+                        </ion-col>
+                        <ion-col size-xs="12" size-sm="6" size-md="5">
+                            
+                            <ion-card id="comentario">
+                                <h3 style="text-align: center;" >{{text['comments']}}</h3>
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-avatar slot="start">
+                                        <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
+                                        </ion-avatar>
+                                        <ion-card-subtitle>Hadaya Hadaya</ion-card-subtitle>
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                              
+                                </ion-card-content>
+        
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-card-subtitle slot="end">David Sanchez</ion-card-subtitle>
+                                        <ion-avatar slot="end">
+                                        <img alt="Silhouette of a person's head" src="../static/images/david.jpg" />
+                                        </ion-avatar>
+                                        
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                            
+                                </ion-card-content>
+        
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-avatar slot="start">
+                                        <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
+                                        </ion-avatar>
+                                        <ion-card-subtitle>Hadaya Hadaya</ion-card-subtitle>
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                              
+                                </ion-card-content>
+        
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-card-subtitle slot="end">David Sanchez</ion-card-subtitle>
+                                        <ion-avatar slot="end">
+                                        <img alt="Silhouette of a person's head" src="../static/images/david.jpg" />
+                                        </ion-avatar>
+                                        
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                            
+                                </ion-card-content>
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-avatar slot="start">
+                                        <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
+                                        </ion-avatar>
+                                        <ion-card-subtitle>Hadaya Hadaya</ion-card-subtitle>
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                              
+                                </ion-card-content>
+        
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-card-subtitle slot="end">David Sanchez</ion-card-subtitle>
+                                        <ion-avatar slot="end">
+                                        <img alt="Silhouette of a person's head" src="../static/images/david.jpg" />
+                                        </ion-avatar>
+                                        
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                            
+                                </ion-card-content>
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-avatar slot="start">
+                                        <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
+                                        </ion-avatar>
+                                        <ion-card-subtitle>Hadaya Hadaya</ion-card-subtitle>
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                              
+                                </ion-card-content>
+        
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-card-subtitle slot="end">David Sanchez</ion-card-subtitle>
+                                        <ion-avatar slot="end">
+                                        <img alt="Silhouette of a person's head" src="../static/images/david.jpg" />
+                                        </ion-avatar>
+                                        
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                            
+                                </ion-card-content>
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-avatar slot="start">
+                                        <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
+                                        </ion-avatar>
+                                        <ion-card-subtitle>Hadaya Hadaya</ion-card-subtitle>
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                              
+                                </ion-card-content>
+        
+                                <ion-card-header id="comment">
+                                    <ion-item lines="none">
+                                        <ion-card-subtitle slot="end">David Sanchez</ion-card-subtitle>
+                                        <ion-avatar slot="end">
+                                        <img alt="Silhouette of a person's head" src="../static/images/david.jpg" />
+                                        </ion-avatar>
+                                        
+                                    </ion-item>
+                                </ion-card-header>
+                                <ion-card-content id="border-comment">
+                                    Lorem ipsum dolor sit amet consectetur.                            
+                                </ion-card-content>
+                                
+                              </ion-card>
+                        </ion-col>
+                    </ion-row>
             </ion-grid>
         </ion-content>
     </ion-app>

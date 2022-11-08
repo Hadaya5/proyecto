@@ -10,11 +10,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename='footer.css')}}">
 </head>
 <body>
     <ion-app>
         {% import './macros/toolbar.html' as toolbar %}
         {{toolbar.toolbar(loged=False,text=text)}}
+        {% import './macros/footer.html' as footer %}
+        {{footer.footer(text)}}
         <ion-content>
             <ion-grid>
                 <ion-row>

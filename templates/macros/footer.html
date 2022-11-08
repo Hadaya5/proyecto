@@ -1,7 +1,19 @@
 {% macro footer(text) -%}
 <ion-footer class="ion-text-center">
-    <ion-toolbar>
-      <ion-title>Copyright © 2022 Escuela de computación - ATI. Todos los derechos reservados</ion-title>
+    <ion-toolbar color="primary" id="footer">
+      <ion-title id="footer-tittle">Copyright © 2022 Escuela de computación - ATI. Todos los derechos reservados</ion-title>
     </ion-toolbar>
 </ion-footer>
+
+<style>
+  #footer {
+    height: 40px;
+  }
+  
+  #footer-tittle {
+    margin-bottom: 15px;
+    font-size: 12pt;
+  }
+</style>
+
 {%- endmacro %}
