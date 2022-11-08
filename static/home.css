@@ -8,6 +8,10 @@
     color: white;
 }
 
+h1 {
+    text-align: center;
+}
+
 img {
     margin-top: 60px;
     border-radius: 20px;
