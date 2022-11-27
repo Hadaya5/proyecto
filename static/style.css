@@ -57,6 +57,11 @@ ion-avatar {
     overflow: auto;
 }
 
+#text-pensando {
+    border-radius: 10px;
+
+}
+
 @media screen and (min-width: 992px) {
 
     #comentario, #publicacion {
@@ -89,3 +94,23 @@ ion-avatar {
     }
     
 }
+
+@media screen and (min-width: 800px) {
+    #text-pensando {
+        width: 590px;
+    } 
+}
+
+@media screen and (max-width: 800px){
+    #text-pensando {
+        width: 400px;
+    } 
+}
+
+ion-textarea.custom-input {
+    --background: #fff;
+    --color: #000;
+    --placeholder-color: #585858;
+    --placeholder-opacity: .8;
+  }
+

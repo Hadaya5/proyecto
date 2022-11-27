@@ -62,11 +62,7 @@
                             </ion-card-content>
                           </ion-card>
                     </ion-col>
-                    
                     <ion-col size-xs="12" size-sm="6" size-md="5">
-                        {% import './macros/comment.html' as comments %}
-
-                        {{comments.comment(text=text,type=text['comments']) }}
       
                         <ion-card id="comentario">
                             <h3 style="text-align: center;" >{{text['comments']}}</h3>
@@ -193,7 +189,7 @@
                             </ion-card-content>
                             <ion-textarea placeholder="{{text['thinking']}}" auto-grow="true"
                                     value="" style="width: 250px;">
-                                  </ion-textarea>
+                            </ion-textarea>
                           </ion-card>
                     </ion-col>
 
@@ -350,7 +346,6 @@
                           </ion-card>
                     </ion-col>
                 </ion-row>
-
             </ion-grid>
         </ion-content>
     </ion-app>
