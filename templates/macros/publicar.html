@@ -1,0 +1,42 @@
+{% macro publicar(text) -%}
+
+<ion-item color="tertiary" id="text-pensando" class="ion-text-center">
+                            
+    <ion-avatar slot="start" class="ion-margin">
+        <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
+    </ion-avatar>
+    <ion-textarea class="custom-input" placeholder="{{text['thinking']}}" auto-grow="true"
+        value="" style="width: 100%;">
+    </ion-textarea>
+    
+    
+    <ion-button class="bt-publicar" disabled="true" style="margin-top: 60px;">{{text['publish']}}</ion-button>
+    <ion-fab-button size="small" style="position: absolute; right: 36px; top: 10px;" onclick="document.querySelector('#inputfile').click()" style="height: 40px; width: 40px;">
+        <ion-icon name="image"></ion-icon>
+    </ion-fab-button>
+    
+    <input  type="file" id="inputfile" style="display: none;">
+</ion-item>
+<div class="image-container" >
+    <ion-fab-button class="removeButton" color="danger">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-img src="" class="img-preview" style="display: none;"></ion-img>
+</div>
+<style>
+    #text-pensando{
+        z-index: 3;
+    }
+    .removeButton{
+        position: absolute;
+        top: 40px;
+        right: 10px;
+    }
+    .image-container{
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+</style>
+{%- endmacro %}

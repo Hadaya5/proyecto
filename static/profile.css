@@ -37,10 +37,6 @@ ion-card {
     --color: #000000;
 }
 
-ion-card-content {
-    --height: 100px;
-    --width: 100px;
-}
 
 .media {
     margin-top: 25px;
