@@ -58,12 +58,12 @@
                                     <ion-note slot="error">{{text['passwordshort']}}</ion-note>
 
                                 </ion-item>
-                                <ion-button onclick="login()" class="center-button" color="primary">
+                                <ion-button name="login-button" onclick="login()" class="center-button" color="primary">
                                     {{text['login']}}
                                     <ion-icon slot="start" name="log-in-outline"></ion-icon>
                                 </ion-button>
 
-                                <ion-item lines="full" href="#">
+                                <ion-item [hoverEffect]=false lines="full" href="#">
                                     <ion-label id="cambiarContrasena">{{text['forgotpassword']}}</ion-label>
                                 </ion-item>
 

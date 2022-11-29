@@ -35,7 +35,7 @@
                                     <ion-label position="floating">
                                         {{text['name']}}
                                     </ion-label>
-                                    <ion-input id="nameInput" type="name"></ion-input>
+                                    <ion-input name="nameInput" id="nameInput" type="name"></ion-input>
                                     <ion-note slot="error">{{text['notempty']}}</ion-note>
                                 </ion-item>
 
@@ -43,7 +43,7 @@
                                     <ion-label position="floating">
                                         {{text['lastname']}}
                                     </ion-label>
-                                    <ion-input id="lastNameInput" type="name"></ion-input>
+                                    <ion-input name="lastNameInput" id="lastNameInput" type="name"></ion-input>
                                     <ion-note slot="error">{{text['notempty']}}</ion-note>
                                 </ion-item>
 
@@ -53,7 +53,7 @@
                                         <ion-icon name="mail-outline"></ion-icon>
                                     </ion-label>
                                     <ion-note id="emailError" slot="error">{{text['invalidemail']}}</ion-note>
-                                    <ion-input id="emailInput" type="email"></ion-input>
+                                    <ion-input name="emailInput" id="emailInput" type="email"></ion-input>
                                 </ion-item>
 
                                 <ion-item>
@@ -61,7 +61,7 @@
                                         {{text['password']}}
                                         <ion-icon name="key-outline"></ion-icon>
                                     </ion-label>
-                                    <ion-input id="passwordInput" type="password"></ion-input>
+                                    <ion-input name="passwordInput" id="passwordInput" type="password"></ion-input>
                                     <ion-note slot="error">{{text['passwordshort']}}</ion-note>
                                 </ion-item>
 
@@ -70,35 +70,35 @@
                                         {{text['confirmpassword']}}
                                         <ion-icon name="key-outline"></ion-icon>
                                     </ion-label>
-                                    <ion-input disabled="true" id="confirmPasswordInput" type="password"></ion-input>
+                                    <ion-input disabled="true" name="confirmPasswordInput" id="confirmPasswordInput" type="password"></ion-input>
                                     <ion-note slot="error">{{text['passwordnotmatch']}}</ion-note>
                                 </ion-item>
 
                                 <ion-radio-group value="w">
                                     <ion-item>
                                         <ion-label>{{text['women']}}</ion-label>
-                                        <ion-radio id="womenRadioInput" value="w"></ion-radio>
+                                        <ion-radio name="womenRadioInput" id="womenRadioInput" value="w"></ion-radio>
                                     </ion-item>
                                     <ion-item>
                                         <ion-label>{{text['man']}}</ion-label>
-                                        <ion-radio id="manRadioInput" value="m"></ion-radio>
+                                        <ion-radio name="manRadioInput" id="manRadioInput" value="m"></ion-radio>
                                     </ion-item>
                                 </ion-radio-group>
                                 <ion-item class="datetime-item">
                                     <ion-label position="fixed">Date of birth</ion-label>
                                     <ion-item class="datetime-item">
-                                        <ion-select id="day-select" class="date-select ion-padding" value="selected" placeholder="Day">
+                                        <ion-select name="day-select" id="day-select" class="date-select ion-padding" value="selected" placeholder="Day">
                                             <ion-select-option value="selected"></ion-select-option>
                                         </ion-select>
-                                        <ion-select id="month-select" class="date-select ion-padding" value="selected" placeholder="Month">
+                                        <ion-select name="month-select" id="month-select" class="date-select ion-padding" value="selected" placeholder="Month">
                                             <ion-select-option value="selected"></ion-select-option>
                                         </ion-select>
-                                        <ion-select id="year-select" class="date-select ion-padding" value="selected" placeholder="Year">
+                                        <ion-select name="year-select" id="year-select" class="date-select ion-padding" value="selected" placeholder="Year">
                                             <ion-select-option value="selected"></ion-select-option>
                                         </ion-select>
                                         <ion-datetime-button style="display: none;" datetime="datetime"></ion-datetime-button>                                        
                                         <ion-modal>
-                                            <ion-datetime id="datetime" presentation="date"
+                                            <ion-datetime name="datetime" id="datetime" presentation="date"
                                             locale="en-US"
                                             prefer-wheel="false"
                                             show-default-buttons="true"                                       
@@ -107,7 +107,7 @@
                             
                                     </ion-item>
                                 </ion-item>
-                                <ion-button id="signupButton" type="submit" class="center-button" color="primary" disabled="false">
+                                <ion-button name="signupButton" id="signupButton" type="submit" class="center-button" color="primary" disabled="false">
                                     {{text['signup']}}
                                     <ion-icon slot="start" name="log-in-outline"></ion-icon>
                                 </ion-button>
