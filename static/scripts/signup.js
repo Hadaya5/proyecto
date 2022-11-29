@@ -103,7 +103,10 @@ selects.forEach( (select) => {
         e.stopPropagation()
         e.stopImmediatePropagation()
         console.log('click')
-        modal.present();
+        if(modal)
+            modal.present();
+        if(popover)
+            popover.present();
       });
 } ) 
 datetime.addEventListener('ionChange',setDate)

@@ -97,15 +97,18 @@
                                             <ion-select-option value="selected"></ion-select-option>
                                         </ion-select>
                                         <ion-datetime-button style="display: none;" datetime="datetime"></ion-datetime-button>                                        
-                                        <ion-modal>
-                                            <ion-datetime name="datetime" id="datetime" presentation="date"
-                                            locale="en-US"
-                                            prefer-wheel="false"
-                                            show-default-buttons="true"                                       
-                                            ></ion-datetime>   
-                                        </ion-modal>
                             
                                     </ion-item>
+                                </ion-item>
+                                <ion-item class="ion-text-center">
+                                    <!-- <ion-popover> -->
+                                        <ion-datetime name="datetime" id="datetime" presentation="date"
+                                        locale="en-US"
+                                        prefer-wheel="false"
+                                        show-default-buttons="true"                                       
+                                        ></ion-datetime>   
+                                    <!-- </ion-popover> -->
+
                                 </ion-item>
                                 <ion-button name="signupButton" id="signupButton" type="submit" class="center-button" color="primary" disabled="false">
                                     {{text['signup']}}
