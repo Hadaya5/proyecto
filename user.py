@@ -10,6 +10,8 @@ from jsonschema import validate
 from datetime import datetime
 from config import text,firebaseApiKey
 import requests
+from utils import remove_oid
+from bson import json_util as bson
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
@@ -92,9 +94,8 @@ def profile():
         return render_template('notloged.html',text=text[lang])
 
     user = getUser(uid)
-    profile = getUserProfile(uid)
     lang = getLanguage(uid)
-    return render_template('profile.html',text=text[lang],user=getUser(uid),profile=getUserProfile(uid))
+    return render_template('profile.html',text=text[lang],user=getUser(uid))
 @user.route('/notifications',methods = ['GET'])
 def notifications():
     uid = checkLogin(request)
@@ -105,3 +106,74 @@ def notifications():
     lang = getLanguage(uid)
 
     return render_template('notificaciones.html',text=text[lang])
+
+@user.route('/manage',methods = ['GET'])
+def manage():
+    uid = checkLogin(request)
+    if(not uid):
+        lang = request.accept_languages.best_match(supported_languages)    
+        return render_template('notloged.html',text=text[lang])
+
+    user = getUser(uid)
+    user['friends'] = db.getUsers(user['friends'])
+    user['blocks'] = db.getUsers(user['blocks'])
+    if(request.method == 'GET'):
+        lang = request.accept_languages.best_match(supported_languages)  
+        return render_template('manage.html',text=text[lang],user=user)
+
+@user.route('/user/<action>',methods = ['GET','POST','PUT','DELETE'])
+def friends(action):
+    uid = checkLogin(request)
+    if(not uid):
+        lang = request.accept_languages.best_match(supported_languages)    
+        if(not lang):
+            lang = 'en'
+        return render_template('notloged.html',text=text[lang])
+
+    user = getUser(uid)
+    if(action == 'friends'):
+        users = user['friends']
+    elif(action == 'blocks'):
+        users = user['blocks']
+    else:
+        return '{"result":"error"}'
+
+
+    # user['blocks'] = db.getUsers(user['blocks'])
+    if(request.method == 'GET'):
+        users = db.getUsers(users)
+        return remove_oid( bson.dumps( users ) ),200,{'Content-Type':'application/json'}
+
+    if(request.method == 'DELETE'):
+        friend = request.args.get('user')
+        if(not friend):
+            return '{"result":"bad request"}',400
+        friend = db.convertId(friend)
+        if(friend not in users):
+            return '{"result":"friend not exist"}',400
+        users.remove(friend)
+        db.saveFriends(uid,users,action)
+        return bson.dumps( db.getUsers(users) )
+
+    if(request.method == 'POST'):
+        friend = request.json.get('user')
+        if(not friend):
+            return '{"result":"bad request"}',400
+        friend = db.convertId(friend)
+        if(friend in users):
+            return '{"result":"user already there"}',400
+        users.append(friend)
+        if(action == 'blocks'):
+            friends = user['friends']
+            if(friend in friends):
+                friends.remove(friend)
+                db.saveFriends(uid,friends,'friends')
+        db.saveFriends(uid,users,action)
+        return bson.dumps( db.getUsers(users) )
+    elif(request.method == 'PUT'):
+        users = request.json.get('users')
+        if(not users):
+            return '{"result":"error"}',400
+        users = db.convertId(users)
+        db.saveFriends(uid,users,action)
+        return bson.dumps( db.getUsers(users) )

@@ -54,6 +54,7 @@
     "book":"favorite books",
     "music":"favorite music",
     "languages": "favorite programming languages",
-    "videogames": "favorite videogames"
+    "videogames": "favorite videogames",
+    "unfriend":"unfriend"
 
 }

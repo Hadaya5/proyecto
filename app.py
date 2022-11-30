@@ -34,12 +34,6 @@ def home():
     lang = request.accept_languages.best_match(supported_languages)    
     return render_template('home.html',text=text[lang])
 
-@app.route('/manage',methods = ['GET'])
-def manage():
-    if(request.method == 'GET'):
-        lang = request.accept_languages.best_match(supported_languages)  
-        return render_template('manage.html',text=text[lang])
-
 @app.route('/aboutus',methods = ['GET'])
 def aboutus():
     if(request.method == 'GET'):

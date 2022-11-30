@@ -54,5 +54,6 @@
     "book":"libros favoritos",
     "languages":"lenguajes de programacion favoritos",
     "music": "Generos favoritos",
-    "videogames": "Videojuegos favoritos"
+    "videogames": "Videojuegos favoritos",
+    "unfriend":"eliminar"
 }

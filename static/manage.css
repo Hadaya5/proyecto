@@ -1,0 +1,10 @@
+@media screen and (min-width: 800px) {
+    .buttons-desktop{
+        display: block;
+    }
+}
+@media screen and (max-width: 800px) {
+    .buttons-desktop{
+        display: none;
+    }
+}

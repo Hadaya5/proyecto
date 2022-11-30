@@ -9,6 +9,11 @@ from datetime import datetime,date
 def convertId(x):
     if(type(x) == ObjectId):
         return x.binary.hex().upper()
+    elif(type(x) == list):
+        s = []
+        for i in x:
+            s.append(convertId(i) )
+        return s
     else:
         return ObjectId(x)
 def eprint(*args, **kwargs):
@@ -58,6 +63,11 @@ def savePost(uid,post):
     db = get_database()    
     posts = db['posts']
     posts.insert_one(post)
+def getUsers(uids):
+    db = get_database()
+    users = list(db['users'].find({'_id':{'$in':uids} },{'idToken':0,'firebaseId':0} ))
+    # eprint(users)
+    return users
 def getFriendsPosts(uids):
     db = get_database()
     posts = db['posts'].find({"uid":{"$in":uids},"privacity":0})
@@ -96,3 +106,9 @@ def setConfig(userid,config):
 def setUserConfig(userid,config):
     db = get_database()
     config = db['users'].update_one({'_id':userid},{'$set':config })
+def saveFriends(uid,friends,action='friends'):
+    db = get_database()
+    db['users'].update_one({'_id':uid},{'$set':{action:friends}})
+# def saveBlocks(uid,blocks):
+#     db = get_database()
+#     db['users'].update_one({'_id':uid},{'$set':{'blocks':blocks}})

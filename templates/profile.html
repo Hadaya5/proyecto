@@ -23,12 +23,12 @@
                 <ion-row>
                     <ion-col style="top: 0px;" id="profile-container" size-xs="12" size-md="8" offset-md="2">
                         <div class="container-portada">
-                            <img class="portada" src="{{ profile['cover'] if profile.get('cover') else url_for('static',filename='images/default/profile_cover.jpg') }}" alt="portada">            
+                            <img class="portada" src="{{ user['cover'] if user.get('cover') else url_for('static',filename='images/default/profile_cover.jpg') }}" alt="portada">            
                             <div class="profile-item">
                                 <ion-item color="none" lines="none" class="item-profile">
                                     <div class="avatar">
                                         <ion-avatar class="perfil-icon" slot="start">
-                                            <img class="perfil-icon-img" alt="Silhouette of a person's head" src="{{profile.get('icon') if profile.get('icon') else url_for('static',filename='images/default/profile_icon.png') }}" />
+                                            <img class="perfil-icon-img" alt="Silhouette of a person's head" src="{{ '/static/images/' + user.get('icon') if user.get('icon') else url_for('static',filename='images/default/profile_icon.png') }}" />
                                             <ion-fab-button class="edit-icon-button" size="small" onclick="document.querySelector('#inputfile').click()" style="height: 40px; width: 40px;">
                                                 <ion-icon  name="image"></ion-icon>
                                             </ion-fab-button>                                    
