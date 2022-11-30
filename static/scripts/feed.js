@@ -3,7 +3,7 @@ const inputContent = document.querySelector('.custom-input')
 const btPublicar = document.querySelector('.bt-publicar')
 const modal = document.querySelector('ion-modal');
 const imgPreview = document.querySelector('.img-preview')
-inputfile.addEventListener('onkeypress', (event) => {
+inputfile.addEventListener('change', (event) => {
     if(event.target.files){
         console.log('files do work')
         file = event.target.files[0]
@@ -18,7 +18,7 @@ inputfile.addEventListener('onkeypress', (event) => {
         fr.readAsDataURL(file)
     }
 })
-inputContent.addEventListener('change', (event) => {
+inputContent.addEventListener('keypress', (event) => {
     if(event.target.value){
         btPublicar.setAttribute('disabled','false')
     }else{
@@ -35,6 +35,20 @@ btPublicar.addEventListener('click', (event) => {
     const file = (inputfile.files[0])
     const content = (inputContent.value)
     if(file && content){
+        const uploadData = new FormData()
+        uploadData.append('file',file)
+        uploadData.append('content',content)
+        uploadData.append('privacity',0)
+        console.log(file)
+        console.log(uploadData)
 
+        fetch('/post',{
+            method: 'post',
+            body: uploadData
+        }).then(response => {
+            console.log(response)
+        }).catch(err => {
+            console.log(err)
+        })
     }
 })

@@ -36,10 +36,6 @@ ion-card {
     margin: 25px;
 }
 
-ion-avatar {
-    height: 60px; 
-    width: 60px; 
-}
 
 #comment {
     padding: 5px;

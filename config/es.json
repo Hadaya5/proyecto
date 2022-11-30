@@ -48,5 +48,11 @@
     "block":"Bloquear",
     "unblock":"Desbloquear",
     "hide":"Esconder",
-    "test":"Texto de Prueba"
+    "test":"Texto de Prueba",
+    "description": "Descripcion",
+    "color":"color favorito",
+    "book":"libros favoritos",
+    "languages":"lenguajes de programacion favoritos",
+    "music": "Generos favoritos",
+    "videogames": "Videojuegos favoritos"
 }

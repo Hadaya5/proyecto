@@ -7,6 +7,7 @@ import sys
 import json
 from config import text,supported_languages
 from db import get_database,checkToken, getUser, getUserProfile, getLanguage
+import db
 from auth import auth
 from posts import post
 from user import user
@@ -33,11 +34,6 @@ def home():
     lang = request.accept_languages.best_match(supported_languages)    
     return render_template('home.html',text=text[lang])
 
-@app.route('/post',methods = ['GET', 'POST'])
-def post():
-    if(request.method == 'GET'):
-        return render_template('publicacion.html')
-
 @app.route('/manage',methods = ['GET'])
 def manage():
     if(request.method == 'GET'):
@@ -60,7 +56,12 @@ def feed():
         user = getUser(uid)
         profile = getUserProfile(uid)
         lang = getLanguage(uid)
-        return render_template('feed.html', text=text[lang], profile = profile, user = user)
+        user['friends']
+        posts = db.getFriendsPosts(user['friends'])
+        # for post in posts:
+        #     getUser(post['uid'])
+
+        return render_template('feed.html', text=text[lang], profile = profile, user = user,posts = posts)
 @app.route('/chat',methods = ['GET'])
 def chat():
     if(request.method == 'GET'):

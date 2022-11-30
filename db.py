@@ -34,23 +34,35 @@ def checkToken(token):
         token['expires'] = datetime.utcfromtimestamp(datetime.utcnow().timestamp()+api_config['token_duration']).isoformat()
         tokens.update_one({"_id":token['_id']},{"$set":{"expires":token['expires']}})
     return token['uid']
-def generateToken(userid):
+def generateToken(userid,idToken=None):
     db = get_database()    
     tokens = db['tokens']
-    token = {
-        'uid':userid,
-        'expires': datetime.utcfromtimestamp(datetime.utcnow().timestamp()+api_config['token_duration']).isoformat(),
-        'token': secrets.token_urlsafe(32)
-    }
+    if(not idToken):
+        token = {
+            'uid':userid,
+            'expires': datetime.utcfromtimestamp(datetime.utcnow().timestamp()+api_config['token_duration']).isoformat(),
+            'token': secrets.token_urlsafe(32)
+        }
+    else:
+        token = {
+            'uid':userid,
+            'expires': datetime.utcfromtimestamp(datetime.utcnow().timestamp()+api_config['token_duration']).isoformat(),
+            'token': idToken
+        }
+
     result = tokens.insert_one(token)
     # return result.inserted_id.binary.hex().upper()
     return token
     
-def savePost(post):
+def savePost(uid,post):
     db = get_database()    
     posts = db['posts']
-    post['timestamp'] = int(time())
     posts.insert_one(post)
+def getFriendsPosts(uids):
+    db = get_database()
+    posts = db['posts'].find({"uid":{"$in":uids},"privacity":0})
+    friends = db['profiles'].find({'_id': {'$in':uids } })
+    return {'posts':posts,'friends':friends}
 def getUser(userid):
     db = get_database()
     s = {'_id':userid}
@@ -67,6 +79,9 @@ def revokeToken(token):
 def getLanguage(userid):
     db = get_database()
     config = db['config'].find_one({'_id':userid})
+    if(not config):
+        eprint('error no userid')
+        eprint(userid)
     lang = config.get('language','es')
     if(lang not in supported_languages):
         for l in supported_languages:
@@ -78,3 +93,6 @@ def getLanguage(userid):
 def setConfig(userid,config):
     db = get_database()
     config = db['config'].update_one({'_id':userid},{'$set':config })
+def setUserConfig(userid,config):
+    db = get_database()
+    config = db['users'].update_one({'_id':userid},{'$set':config })

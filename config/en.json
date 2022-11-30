@@ -48,6 +48,12 @@
     "block":"Block",
     "unblock":"Unblock",
     "hide":"Hide",
-    "test":"Test Text"
+    "test":"Test Text",
+    "description": "Description",
+    "color":"color",
+    "book":"favorite books",
+    "music":"favorite music",
+    "languages": "favorite programming languages",
+    "videogames": "favorite videogames"
 
 }

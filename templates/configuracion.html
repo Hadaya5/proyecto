@@ -9,6 +9,7 @@
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
     <link rel="stylesheet" href="{{url_for('static', filename='footer.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='config.css')}}">
     <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
@@ -24,7 +25,7 @@
                         <ion-card>
                             <ion-card-header>
                                 <ion-card-title>
-                                    <p>{{ text['configuration'].capitalize() }}</p>
+                                    <p>{{ text['profile'].capitalize() }}</p>
                                 </ion-card-title>
                             </ion-card-header>
                             <ion-card-content>
@@ -33,21 +34,89 @@
                                         {{text['edit'] + ' ' + text['name'].lower() }}
                                         <ion-icon name="person-outline"></ion-icon>
                                     </ion-label>
-                                    <ion-input value="Hadaya" type="text"></ion-input>
+                                    <ion-input name="name" class="config-input" value="{{user['name']}}" type="text"></ion-input>
+                                    <ion-icon class="save-icon" slot="end" name="save-outline"></ion-icon>
                                 </ion-item>
                                 <ion-item>
                                     <ion-label position="floating">
                                         {{text['edit'] + ' ' + text['lastname'].lower() }}
                                         <ion-icon name="person-outline"></ion-icon>
                                     </ion-label>
-                                    <ion-input value="Hadaya" type="text"></ion-input>
+                                    <ion-input name="lastname" class="config-input" value="{{user['lastname']}}" type="text"></ion-input>
+                                    <ion-icon class="save-icon" slot="end" name="save-outline"></ion-icon>
                                 </ion-item>
+                                <ion-item>
+                                    <ion-label position="floating">
+                                        {{text['edit'] + ' ' + text['description'].lower() }}
+                                    </ion-label>
+                                    <ion-input name="description" class="config-input" value="{{user['description']}}" type="text"></ion-input>
+                                    <ion-icon class="save-icon" slot="end" name="save-outline"></ion-icon>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label position="floating">
+                                        {{text['edit'] + ' ' + text['color'].lower() }}
+                                    </ion-label>
+                                    <ion-input name="color" class="config-input" value="{{user['color']}}" type="text"></ion-input>
+                                    <ion-icon class="save-icon" slot="end" name="save-outline"></ion-icon>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label position="floating">
+                                        {{text['edit'] + ' ' + text['book'].lower() }}
+                                    </ion-label>
+                                    <ion-input name="book" class="config-input" value="{{user['book']}}" type="text"></ion-input>
+                                    <ion-icon class="save-icon" slot="end" name="save-outline"></ion-icon>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label position="floating">
+                                        {{text['edit'] + ' ' + text['music'].lower() }}
+                                    </ion-label>
+                                    <ion-input name="music" class="config-input" value="{{user['music']}}" type="text"></ion-input>
+                                    <ion-icon class="save-icon" slot="end" name="save-outline"></ion-icon>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label position="floating">
+                                        {{text['edit'] + ' ' + text['videogames'].lower() }}
+                                    </ion-label>
+                                    <ion-input name="videogames" class="config-input" value="{{user['videogames']}}" type="text"></ion-input>
+                                    <ion-icon class="save-icon" slot="end" name="save-outline"></ion-icon>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label position="floating">
+                                        {{text['edit'] + ' ' + text['languages'].lower() }}
+                                    </ion-label>
+                                    <ion-input name="languages" class="config-input" value="{{user['languages']}}" type="text"></ion-input>
+                                    <ion-icon class="save-icon" slot="end" name="save-outline"></ion-icon>
+                                </ion-item>
+                                
+
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size-xs="12" size-md="6" offset-md="3" size-lg="4" offset-lg="4">
+                        <ion-card>
+                            <ion-card-header>
+                                <ion-card-title>
+                                    <p>{{ text['configuration'].capitalize() }}</p>
+                                </ion-card-title>
+                            </ion-card-header>
+                            <ion-card-content>
                                 <ion-item>
                                     <ion-label position="floating">
                                         {{text['edit'] + ' ' + text['email'].lower() }}
                                         <ion-icon name="mail-outline"></ion-icon>
                                     </ion-label>
-                                    <ion-input value="hadaya@gmail.com" type="email"></ion-input>
+                                    <ion-input name="email" class="config-input" value="{{user['email']}}" type="text"></ion-input>
+                                    <ion-icon class="save-icon" slot="end" name="save-outline"></ion-icon>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label position="floating">
+                                        {{text['edit'] + ' ' + text['password'].lower() }}
+                                        <ion-icon name="key-outline"></ion-icon>
+                                    </ion-label>
+                                    <ion-input type="password" name="password" class="config-input" value="" type="text"></ion-input>
+                                    <ion-icon class="save-icon" slot="end" name="save-outline"></ion-icon>
                                 </ion-item>
 
                                 <ion-item>
@@ -81,7 +150,7 @@
                                 
 
                             </ion-card-content>
-                        </ion-card>
+                
                     </ion-col>
                 </ion-row>
             </ion-grid>

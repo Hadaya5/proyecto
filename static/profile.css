@@ -1,7 +1,26 @@
-#perfil {
+.perfil-icon {
     min-height: 130px; 
     min-width: 130px; 
+    height: 60px; 
+    width: 60px; 
 }
+
+.perfil-icon:hover:after{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    content: "";
+    display: inline;
+    background: rgb(0,0,0);
+    z-index: 1;
+    border-radius: 100px;
+    width: 130px;
+    height: 130px;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.3309698879551821) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.44861694677871145) 0%);
+}
+
 .container-portada{
     width: 100%;
     display: flex;
@@ -40,4 +59,11 @@ ion-card {
 
 .media {
     margin-top: 25px;
+}
+.edit-icon-button{
+    z-index: 5;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    visibility: hidden;
 }
