@@ -28,7 +28,7 @@ def get_database():
         authMechanism="MONGODB-X509",
         tls=True,
         tlsCertificateKeyFile='certs/X509-cert-7763428516671651370.pem',
-        serverSelectionTimeoutMS=1000)
+        serverSelectionTimeoutMS=10000)
     return client[db_config['database']]
 def checkToken(token):
     
