@@ -39,9 +39,7 @@ def upload_file(file_name, object_name=None):
 
     # Upload the file
     s3_client = boto3.client('s3',
-        region_name = 'us-east-1',
-        aws_access_key_id=awscredentials[0],
-        aws_secret_access_key=awscredentials[1],)
+        region_name = 'us-east-1')
     eprint(awscredentials[0])
     eprint(awscredentials[1])
     try:
