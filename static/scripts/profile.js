@@ -8,7 +8,26 @@ avatarImg.addEventListener('click',(event) => {
 })
 avatarDiv.addEventListener('click',(event) => {
     inputFileElement.click()
+
 })
 inputFileElement.addEventListener('change', (event) => {
     console.log(event.target.files)
+    const file = event.target.files[0]
+    if(file){
+        const uploadData = new FormData()
+        uploadData.append('file',file)
+        console.log(file)
+        console.log(uploadData)
+
+        fetch('/pic',{
+            method: 'post',
+            body: uploadData
+        }).then(response => {
+            console.log(response)
+            window.location = window.location
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
 })

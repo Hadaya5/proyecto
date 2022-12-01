@@ -161,3 +161,6 @@ def addComment(postid,comment):
     db['posts'].update_one({'_id':convertId(postid) },{'$set':{'comments':comments}})
     
     
+def updatePic(uid,pic):
+    db = get_database()
+    db['users'].update_one({'_id':uid},{'$set':{'icon':pic}})

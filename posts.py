@@ -55,3 +55,24 @@ def comment():
     }
     db.addComment(jsRequest['postid'],comment)
     return '{"result":"ok"}'
+
+@post.route('/pic',methods = ['POST'])
+def pic():
+    token = request.cookies.get('token','')
+    uid = checkToken(token)
+    if(not uid):
+        eprint('not authorized')
+        return redirect('/')    
+    eprint(request.form)
+    eprint(request.files)
+    if(len(request.files)):
+        f = request.files.get('file')
+        filename = f.filename
+        filename = db.convertId(uid) + str(time()).replace('.','') + filename 
+        utils.compressMe(f,filename)
+        db.updatePic(uid,filename)
+        # return '{"result":"test"}'
+        # f.save('static/images/' + filename)
+        return '{"result":"ok"}'
+    else:
+        return '{"result":"fail"}'

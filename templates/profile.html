@@ -90,7 +90,8 @@
             </ion-grid>
         </ion-content>
     </ion-app>
+{% if editable %}
 <script src="{{ url_for('static', filename='scripts/profile.js') }}"></script>
-
+{% endif %}
 </body>
 </html>
