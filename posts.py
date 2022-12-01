@@ -26,7 +26,7 @@ def upload():
     post = {
         'content':request.form.get('content'),
         'uid': uid,
-        'coments': []
+        'comments': []
     }
     if(len(request.files)):
         f = request.files.get('file')
@@ -38,4 +38,21 @@ def upload():
         # f.save('static/images/' + filename)
     savePost(uid,post)
     eprint(post)
+    return '{"result":"ok"}'
+
+@post.route('/comment',methods = ['POST'])
+def comment():
+    token = request.cookies.get('token','')
+    uid = checkToken(token)
+    if(not uid):
+        eprint('not authorized')
+        return redirect('/')  
+    jsRequest = request.json
+    print(jsRequest)
+    comment = {
+        'uid': uid,
+        'content':jsRequest['content'],
+        'comments': []
+    }
+    db.addComment(jsRequest['postid'],comment)
     return '{"result":"ok"}'

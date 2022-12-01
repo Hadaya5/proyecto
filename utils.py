@@ -17,7 +17,7 @@ def remove_oid(string):
 def compressMe(file, filename):
     picture = Image.open(file)
     picture.thumbnail((500,500), Image.ANTIALIAS)
-    picture.save("/tmp/"+filename,"JPEG",optimize = True,quality = 10)
+    picture.save("/tmp/"+filename,"JPEG",optimize = True,quality = 80)
     upload_file("/tmp/"+filename,filename)
 
 def upload_file(file_name, object_name=None):

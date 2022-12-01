@@ -100,9 +100,10 @@ def profile(userid=None):
         if(not user):
             return render_template('404.html',text=text[lang])
         else:
-            return render_template('profile.html',text=text[lang],user=user,editable=False,posts=db.getFriendsPosts([db.convertId(userid) ]))
+            return render_template('profile.html',text=text[lang],user=user,editable=False,posts=db.getFriendsPosts([db.convertId(userid) ]),users=db.getUsersDict(user['friends'] + [user['_id']]))
     else:
-        return render_template('profile.html',text=text[lang],user=getUser(uid),editable=True,posts=db.getFriendsPosts([db.convertId(userid) ]))
+        user = getUser(uid)
+        return render_template('profile.html',text=text[lang],user=user,editable=True,posts=db.getFriendsPosts([uid]),users=db.getUsersDict(user['friends'] + [user['_id']]))
 
 @user.route('/notifications',methods = ['GET'])
 def notifications():

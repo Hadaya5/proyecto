@@ -23,7 +23,9 @@ app.register_blueprint(user,name="user")
 @app.errorhandler(404)
 def not_found(e):
     
-    lang = request.accept_languages.best_match(supported_languages)    
+    lang = request.accept_languages.best_match(supported_languages)   
+    if(not lang):
+        lang = 'en' 
     return render_template("404.html",text=text[lang])
 @app.route('/')
 def home():
@@ -31,13 +33,19 @@ def home():
     uid = checkToken(token)
     if(uid):
         return redirect('/feed')    
-    lang = request.accept_languages.best_match(supported_languages)    
+    lang = request.accept_languages.best_match(supported_languages)  
+    if(not lang):
+        lang = 'en' 
+  
     return render_template('home.html',text=text[lang])
 
 @app.route('/aboutus',methods = ['GET'])
 def aboutus():
     if(request.method == 'GET'):
         lang = request.accept_languages.best_match(supported_languages)  
+        if(not lang):
+            lang = 'en' 
+
         return render_template('aboutus.html',text=text[lang])
 
 @app.route('/feed',methods = ['GET'])
@@ -55,7 +63,13 @@ def feed():
         # for post in posts:
         #     getUser(post['uid'])
 
-        return render_template('feed.html', text=text[lang], user = user,posts = posts,users=db.getUsersDict(user['friends'] + [user['_id']]))
+        return render_template(
+            'feed.html',
+            text=text[lang],
+            user = user,
+            posts = posts,
+            users=db.getUsersDict(user['friends'] + [user['_id']])
+            )
 @app.route('/chat',methods = ['GET'])
 def chat():
     if(request.method == 'GET'):

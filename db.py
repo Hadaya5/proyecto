@@ -151,3 +151,10 @@ def addFriend(uid,friend):
     db['users'].update_one({'_id':uid},{'$set':{'friends':friends}})
     return friends
 
+def addComment(postid,comment):
+    db = get_database()
+    comments = db['posts'].find_one({'_id':convertId(postid) },{'comments':1})['comments']
+    comments.append(comment)
+    db['posts'].update_one({'_id':convertId(postid) },{'$set':{'comments':comments}})
+    
+    

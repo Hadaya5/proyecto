@@ -74,7 +74,15 @@
                 {% for post in posts %}
                 <ion-row>
                     <ion-col  size-xs="12" size-sm="4" offset-sm="4">
-                        {{publicacion.publicacion('https://d34pkca7tf0sls.cloudfront.net/images/' + user['icon'],user['name'] + ' ' + user['lastname'] ,post['content'],'https://d34pkca7tf0sls.cloudfront.net/images/' + post['media'],user['_id'].binary.hex().upper())}}
+                        {{publicacion.publicacion('https://d34pkca7tf0sls.cloudfront.net/images/' + user['icon'],
+                        user['name'] + ' ' + user['lastname'] ,
+                        post['content'],
+                        'https://d34pkca7tf0sls.cloudfront.net/images/' + post['media'],
+                        post['uid'].binary.hex().upper(),
+                        post['comments'],
+                        users,
+                        post['_id'].binary.hex().upper()
+                        )}}
                     </ion-col>
                 </ion-row>
                 {% endfor %}

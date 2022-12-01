@@ -1,4 +1,4 @@
-{% macro publicacion(userProfilePhoto,userDisplayName,content,media,userid) -%}
+{% macro publicacion(userProfilePhoto,userDisplayName,content,media,userid,comments,users,postid) -%}
 
 <ion-card id="publicacion">
     <ion-card-header>
@@ -16,7 +16,50 @@
         {% if media %}
             <img class="media" alt="Silhouette of a person's head" src="{{media}}"/>
         {% endif %}
+        <ion-list>
+                {% for comment in comments %}
+                <ion-item>
+                    <ion-avatar slot="start">
+                        <ion-img src="{{ 'https://d34pkca7tf0sls.cloudfront.net/images/' + users[comment['uid']]['icon'] }}"></ion-img>
+                    </ion-avatar>
+                    <ion-label>
+                        <h2>{{users[comment['uid']]['name'] + ' ' + users[comment['uid']]['lastname'] }}</h2>
+                        <h3>{{comment['content']}}</h3>
+                    </ion-label>
+                </ion-item>
+                {% endfor %}
+            </ion-list>
+        <ion-item>
+            <ion-input class="comment-input"></ion-input>
+            <ion-icon class="send-icon" slot="end" color="primary" name="send"></ion-icon>
+        </ion-item>
     </ion-card-content>
   </ion-card>
+  <script>
+    input = document.querySelector('.comment-input')
+    sendIcon = document.querySelector('.send-icon')
+    sendIcon.addEventListener('click',() => {
+        content = input.value
+        o = {content:content,postid:'{{postid}}'}
+        console.log(o)
+        fetch('/comment',{
+            method: 'POST',
+            body: JSON.stringify(o),
+            headers: {
+            "Content-Type": "application/json"
+            }
+        }).then(response => {
+            if(!response.ok){
+                throw new Error('F')
+            }
+            return response.json()
+        }).then(response => {
+            console.log(response)
+            window.location = window.location
+        } ).catch(err => {
+            console.log(err)
+        })
+    })
+  </script>
 
 {%- endmacro %}
