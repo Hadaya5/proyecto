@@ -29,17 +29,31 @@
                 </ion-item>
                 {% endfor %}
             </ion-list>
-        <ion-item>
+        <ion-item class="C{{postid}}">
             <ion-input class="comment-input"></ion-input>
-            <ion-icon class="send-icon" slot="end" color="primary" name="send"></ion-icon>
+            <ion-button  fill="outline">
+                <ion-icon slot="icon-only" class="send-icon" color="primary" name="send"></ion-icon>
+            </ion-button>
         </ion-item>
     </ion-card-content>
   </ion-card>
   <script>
-    input = document.querySelector('.comment-input')
-    sendIcon = document.querySelector('.send-icon')
-    sendIcon.addEventListener('click',() => {
+    
+    document.querySelector('.C{{postid}}').querySelector('ion-button').addEventListener('click',() => {
+        const item = document.querySelector('.C{{postid}}')
+        const input = item.querySelector('ion-input')
+        const sendIcon = item.querySelector('ion-button')
+        console.log('click')
+
         content = input.value
+        if(!content){
+            return
+        }
+        sendIcon.setAttribute('disabled','true')
+        // sendIcon.style.visibility = 'hidden'
+        // sendIcon.style.display = 'none'
+        // item.style.display = 'none'
+        // return
         o = {content:content,postid:'{{postid}}'}
         console.log(o)
         fetch('/comment',{

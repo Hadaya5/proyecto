@@ -51,8 +51,7 @@ def comment():
     print(jsRequest)
     comment = {
         'uid': uid,
-        'content':jsRequest['content'],
-        'comments': []
+        'content':jsRequest['content']
     }
     db.addComment(jsRequest['postid'],comment)
     return '{"result":"ok"}'
