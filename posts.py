@@ -8,6 +8,7 @@ from config import supported_languages,text,schemas
 from jsonschema import validate
 from datetime import datetime
 import db
+import utils
 from time import time
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
@@ -32,7 +33,9 @@ def upload():
         filename = f.filename
         filename = db.convertId(uid) + str(time()).replace('.','') + filename 
         post['media'] = filename
-        f.save('static/images/' + filename)
+        utils.compressMe(f,filename)
+        # return '{"result":"test"}'
+        # f.save('static/images/' + filename)
     savePost(uid,post)
     eprint(post)
     return '{"result":"ok"}'

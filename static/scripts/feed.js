@@ -11,6 +11,8 @@ removeButton.addEventListener('click',(event) => {
 })
 inputfile.addEventListener('change', (event) => {
     if(event.target.files){
+        document.querySelector('.image-container').style.display = 'block';
+
         console.log('files do work')
         file = event.target.files[0]
         const fr = new FileReader()
@@ -22,6 +24,8 @@ inputfile.addEventListener('change', (event) => {
             document.querySelector('.image-container').style.display = 'block';
         }
         fr.readAsDataURL(file)
+    }else{
+        console.log('no files')
     }
 })
 inputContent.addEventListener('keypress', (event) => {

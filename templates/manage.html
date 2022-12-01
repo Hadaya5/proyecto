@@ -47,7 +47,7 @@
 
                       <ion-item>
                         <ion-avatar slot="start">
-                          <img alt="Silhouette of a person's head" src=" {{ '/static/images/' + friend.get('icon') if friend.get('icon') else url_for('static',filename='images/default/profile_icon.png') }}" />
+                          <img alt="Silhouette of a person's head" src=" {{ 'https://d34pkca7tf0sls.cloudfront.net/images/' + friend.get('icon') if friend.get('icon') else url_for('static',filename='images/default/profile_icon.png') }}" />
                         </ion-avatar>
                         <ion-text>
                           <h1 class="username">{{friend['name'] + ' ' + friend['lastname']}}</h1>
@@ -101,7 +101,7 @@
                     <ion-item-sliding>
                       <ion-item>
                         <ion-avatar slot="start">
-                          <img alt="Silhouette of a person's head" src=" {{ '/static/images/' + friend.get('icon') if friend.get('icon') else url_for('static',filename='images/default/profile_icon.png') }}" />
+                          <img alt="Silhouette of a person's head" src=" {{ 'https://d34pkca7tf0sls.cloudfront.net/images/' + friend.get('icon') if friend.get('icon') else url_for('static',filename='images/default/profile_icon.png') }}" />
                         </ion-avatar>
                         <ion-text>
                           <h1 class="username">{{friend['name'] + ' ' + friend['lastname']}}</h1>

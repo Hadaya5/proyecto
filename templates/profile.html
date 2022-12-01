@@ -31,7 +31,7 @@
                                 <ion-item color="none" lines="none" class="item-profile">
                                     <div class="avatar">
                                         <ion-avatar class="perfil-icon" slot="start">
-                                            <img class="perfil-icon-img" alt="Silhouette of a person's head" src="{{ '/static/images/' + user.get('icon') if user.get('icon') else url_for('static',filename='images/default/profile_icon.png') }}" />
+                                            <img class="perfil-icon-img" alt="Silhouette of a person's head" src="{{ 'https://d34pkca7tf0sls.cloudfront.net/images/' + user.get('icon') if user.get('icon') else url_for('static',filename='images/default/profile_icon.png') }}" />
                                             <ion-fab-button class="edit-icon-button" size="small" onclick="document.querySelector('#inputfile').click()" style="height: 40px; width: 40px;">
                                                 <ion-icon  name="image"></ion-icon>
                                             </ion-fab-button>                                    
@@ -77,14 +77,14 @@
                         <ion-item color="tertiary" id="text-pensando" class="ion-text-center">
                             
                             <ion-avatar slot="start">
-                                <img alt="Silhouette of a person's head" src="{{'/static/images/' + user['icon']}}" />
+                                <img alt="Silhouette of a person's head" src="{{'https://d34pkca7tf0sls.cloudfront.net/images/' + user['icon']}}" />
                             </ion-avatar>
                             <ion-item id="open-modal" button class="pub-text-item">
                                     {{text['thinking']}}
                             </ion-item>
                         </ion-item>
                         <ion-modal trigger="open-modal">
-                            {{publicar.publicar(text,'/static/images/' + user['icon']) }}
+                            {{publicar.publicar(text,'https://d34pkca7tf0sls.cloudfront.net/images/' + user['icon']) }}
                         </ion-modal>
                 
                     </ion-col>
@@ -93,7 +93,7 @@
                 {% for post in posts %}
                 <ion-row>
                     <ion-col  size-xs="12" size-sm="4" offset-sm="4">
-                        {{publicacion.publicacion('/static/images/' + users[post['uid']]['icon'],users[post['uid']]['name'] + ' ' + users[post['uid']]['lastname'] ,post['content'],'/static/images/' + post['media'])}}
+                        {{publicacion.publicacion('https://d34pkca7tf0sls.cloudfront.net/images/' + users[post['uid']]['icon'],users[post['uid']]['name'] + ' ' + users[post['uid']]['lastname'] ,post['content'],'https://d34pkca7tf0sls.cloudfront.net/images/' + post['media'])}}
                     </ion-col>
                 </ion-row>
                 {% endfor %}

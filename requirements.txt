@@ -3,3 +3,5 @@ pymongo
 flask-argon2
 jsonschema
 requests
+boto3
+pillow
