@@ -1,6 +1,8 @@
 const selects = document.querySelectorAll('.date-select');
 const modal = document.querySelector('ion-modal');
 const datetime = document.querySelector('ion-datetime')
+const simpleDatetime = document.querySelector('#datetime')
+
 const daySelect = document.querySelector('#day-select')
 const monthSelect = document.querySelector('#month-select')
 const yearSelect = document.querySelector('#year-select')
@@ -93,9 +95,9 @@ function passwordsMatch(){
 const validateEmail = (email) => {
     return email.match(/^(?=.{1,254}$)(?=.{1,64}@)[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
 };
-datetime.locale = navigator.locale
-datetime.min = new Date("1922-01-01").toISOString()
-datetime.max = new Date().toISOString()
+// datetime.locale = navigator.locale
+// datetime.min = new Date("1922-01-01").toISOString()
+// datetime.max = new Date().toISOString()
 
 selects.forEach( (select) => {
     select.addEventListener('click', e => {
@@ -109,11 +111,17 @@ selects.forEach( (select) => {
             popover.present();
       });
 } ) 
-datetime.addEventListener('ionChange',setDate)
+// datetime.addEventListener('ionChange',setDate)
 
-function setDate(event){
+function setDate(givenDate){
     console.log('vamos')
-    const date = new Date(datetime.value)
+    let date;
+    if(givenDate){
+        date = new Date(givenDate)
+    }else{
+        date = new Date(datetime.value)
+
+    }
     console.log(date.toISOString())
     console.log(date.g)
     let element = daySelect.shadowRoot.querySelector('.select-text')
@@ -157,7 +165,8 @@ form.addEventListener("submit", (e) => {
     const name = nameInput.value
     const lastname = lastNameInput.value
     const gender = document.querySelector('ion-radio-group').value
-    const birthday = datetime.value.slice(0,10)
+    console.log(simpleDatetime.value.slice(0,10))
+    const birthday = simpleDatetime.value.slice(0,10)
     let user = {email,password,name,lastname,birthday,gender}
     fetch("/signup", {
         method: "POST",
@@ -178,8 +187,8 @@ form.addEventListener("submit", (e) => {
             console.log(data)
             if(data.result === "ok"){
                 const alert = document.createElement('ion-alert');
-                alert.header = data.message;
-                alert.subHeader = data.submessage;
+                alert.header = 'sucess';
+                alert.subHeader = 'login now';
                 // alert.message = '';
                 alert.buttons = [{
                     text: 'OK',

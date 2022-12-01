@@ -84,8 +84,8 @@
                                         <ion-radio name="manRadioInput" id="manRadioInput" value="m"></ion-radio>
                                     </ion-item>
                                 </ion-radio-group>
-                                <ion-item class="datetime-item">
-                                    <ion-label position="fixed">Date of birth</ion-label>
+                                <ion-item style="display: none;" class="datetime-item">
+                                    <ion-label position="fixed">{{text['birthday']}}</ion-label>
                                     <ion-item class="datetime-item">
                                         <ion-select name="day-select" id="day-select" class="date-select ion-padding" value="selected" placeholder="Day">
                                             <ion-select-option value="selected"></ion-select-option>
@@ -100,16 +100,25 @@
                             
                                     </ion-item>
                                 </ion-item>
-                                <ion-item class="ion-text-center">
-                                    <ion-modal>
+                                <!-- <ion-item class="ion-text-center"> -->
+                                    <!-- <ion-modal>
                                         <ion-datetime name="datetime" id="datetime" presentation="date"
                                         locale="en-US"
                                         prefer-wheel="false"
                                         show-default-buttons="true"                                       
                                         ></ion-datetime>   
-                                    </ion-modal>
+                                    </ion-modal> -->
 
+                                <!-- </ion-item> -->
+                                <ion-item>
+                                    <ion-label position="fixed">
+                                        {{text['birthday']}}
+                                    </ion-label>
+                                    <ion-input name="datetime" id="datetime" type="date"></ion-input>
+                                    <ion-note slot="error">{{text['notempty']}}</ion-note>
                                 </ion-item>
+
+                                <!-- <input type="date" on> -->
                                 <ion-button name="signupButton" id="signupButton" type="submit" class="center-button" color="primary" disabled="false">
                                     {{text['signup']}}
                                     <ion-icon slot="start" name="log-in-outline"></ion-icon>
