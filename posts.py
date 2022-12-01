@@ -7,6 +7,8 @@ from flask import Blueprint,redirect
 from config import supported_languages,text,schemas
 from jsonschema import validate
 from datetime import datetime
+import db
+from time import time
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
@@ -22,11 +24,15 @@ def upload():
     eprint(request.files)
     post = {
         'content':request.form.get('content'),
-        'uid': uid
+        'uid': uid,
+        'coments': []
     }
     if(len(request.files)):
-        post['file'] = request.files.get('file')  
-    post['privacity'] = request.form.get("privacity")
-    savePost(post)
+        f = request.files.get('file')
+        filename = f.filename
+        filename = db.convertId(uid) + str(time()).replace('.','') + filename 
+        post['media'] = filename
+        f.save('static/images/' + filename)
+    savePost(uid,post)
     eprint(post)
-    return ''
+    return '{"result":"ok"}'

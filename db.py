@@ -21,9 +21,14 @@ def eprint(*args, **kwargs):
 
 def get_database():
  
-    CONNECTION_STRING = f"mongodb://{db_config['user']}:{db_config['password']}@{db_config['host']}:{db_config['port']}/{db_config['database']}?authSource=admin"
+    # CONNECTION_STRING = f"mongodb://{db_config['user']}:{db_config['password']}@{db_config['host']}:{db_config['port']}/{db_config['database']}?authSource=admin"
+    CONNECTION_STRING = db_config['uri']
     eprint(CONNECTION_STRING)
-    client = MongoClient(CONNECTION_STRING,serverSelectionTimeoutMS=1000)
+    client = MongoClient(CONNECTION_STRING,
+        authMechanism="MONGODB-X509",
+        tls=True,
+        tlsCertificateKeyFile='certs/X509-cert-7763428516671651370.pem',
+        serverSelectionTimeoutMS=1000)
     return client[db_config['database']]
 def checkToken(token):
     
@@ -68,11 +73,18 @@ def getUsers(uids):
     users = list(db['users'].find({'_id':{'$in':uids} },{'idToken':0,'firebaseId':0} ))
     # eprint(users)
     return users
+def getUsersDict(uids):
+    db = get_database()
+    users = list(db['users'].find({'_id':{'$in':uids} },{'idToken':0,'firebaseId':0} ))
+    usersDict = {}
+    for u in users:
+        # usersDict[convertId(u['_id']) ] = u
+        usersDict[u['_id'] ] = u
+    return usersDict
 def getFriendsPosts(uids):
     db = get_database()
-    posts = db['posts'].find({"uid":{"$in":uids},"privacity":0})
-    friends = db['profiles'].find({'_id': {'$in':uids } })
-    return {'posts':posts,'friends':friends}
+    posts = db['posts'].find({"uid":{"$in":uids}})
+    return posts
 def getUser(userid):
     db = get_database()
     s = {'_id':userid}
@@ -112,3 +124,11 @@ def saveFriends(uid,friends,action='friends'):
 # def saveBlocks(uid,blocks):
 #     db = get_database()
 #     db['users'].update_one({'_id':uid},{'$set':{'blocks':blocks}})
+def searchUsers(query):
+    db = get_database()
+    users = db['users'].find({'$or':[{'name':f'{query}/.*'},{'lastname':f'{query}/.*'}]},{'idToken':0,'firebaseId':0} )
+    return list(users)
+def getAllUsers():
+    db = get_database()
+    users = db['users'].find({},{'idToken':0,'firebaseId':0})
+    return list(users)

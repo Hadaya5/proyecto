@@ -70,7 +70,7 @@ def sign():
             'idToken': response.json().get('idToken'),
             'firebaseId': response.json().get('localId'),
             'friends': [],
-            'blocked': []
+            'blocks': []
         }
         e = users.insert_one(user)
         # db.credentials.insert_one({'_id':e.inserted_id,'idToken':'' })

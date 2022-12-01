@@ -3,6 +3,12 @@ const inputContent = document.querySelector('.custom-input')
 const btPublicar = document.querySelector('.bt-publicar')
 const modal = document.querySelector('ion-modal');
 const imgPreview = document.querySelector('.img-preview')
+const removeButton = document.querySelector('.removeButton')
+removeButton.addEventListener('click',(event) => {
+    imgPreview.setAttribute('src','')
+    imgPreview.style.display = 'none'
+    document.querySelector('.image-container').style.display = 'none';
+})
 inputfile.addEventListener('change', (event) => {
     if(event.target.files){
         console.log('files do work')
@@ -27,8 +33,7 @@ inputContent.addEventListener('keypress', (event) => {
 })
 modal.addEventListener('willDismiss', (ev) => {
     if (ev.detail.role === 'confirm') {
-      const message = document.querySelector('#message');
-      message.textContent = `Hello ${ev.detail.data}!`;
+        xd
     }
   });
 btPublicar.addEventListener('click', (event) => {
@@ -47,6 +52,8 @@ btPublicar.addEventListener('click', (event) => {
             body: uploadData
         }).then(response => {
             console.log(response)
+            modal.dismiss()
+            // window.location = '/feed'
         }).catch(err => {
             console.log(err)
         })

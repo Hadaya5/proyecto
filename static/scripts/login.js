@@ -153,7 +153,14 @@ function login(){
                 document.cookie = `uid=${data.uid}` + expires
                 window.location = '/'
             }else{
-                console.log('invalid login')
+              const alert = document.createElement('ion-alert');
+              alert.header = 'Invalid login!';
+              alert.subHeader = 'check credentials'
+              alert.buttons = ['OK'];
+          
+              document.body.appendChild(alert);
+              alert.present();
+  
             }
         }
       )

@@ -11,7 +11,8 @@
             </ion-title>
  
             <ion-toolbar color="primary" slot="end">
-                <ion-searchbar style="--border-radius: 20px; width: 200px;" placeholder="Buscar" slot="end" animated="true"></ion-searchbar>
+                <ion-searchbar enterkeyhint​="enter" style="--border-radius: 20px; width: 200px;" placeholder="Buscar" slot="end" animated="true"></ion-searchbar>
+                
             </ion-toolbar>
 
             {% else %}
@@ -39,9 +40,6 @@
                 {% if not loged %}
                 <ion-button href="/aboutus">
                     <p>{{text['aboutus']}}</p>
-                </ion-button>
-                <ion-button >
-                    <p>{{text['terms']}}</p>
                 </ion-button>
                 <ion-button class="login-button" href="login">
                     {{text['login']}}
@@ -77,5 +75,32 @@
             </ion-buttons>
         </ion-toolbar>
     </ion-header>
+    <script>
+        searchBar = document.querySelector('ion-searchbar')
+        if(searchBar){
 
+            searchBar.addEventListener('ionChange', (event) => {
+                console.log(event.target.value)
+                window.location = `/search?query=${event.target.value}`
+                fetch(`/search?query=${event.target.value}`,
+                {
+                    method: 'GET'
+                }).then( response => {
+                    console.log(response)
+                    return response.json()
+                }).then( users => {
+    
+    
+                })
+            })
+        }
+    </script>
+    <style>
+        .searchResults{
+            z-index: 20;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+        }
+    </style>
 {%- endmacro %}

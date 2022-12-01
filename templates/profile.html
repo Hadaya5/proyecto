@@ -18,6 +18,9 @@
         {{toolbar.toolbar(loged=True,text=text)}}
         {% import './macros/footer.html' as footer %}
         {{footer.footer(text)}}
+        {% import './macros/publicacion.html' as publicacion %}
+        {% import './macros/publicar.html' as publicar %}
+    
         <ion-content padding="false">
             <ion-grid>
                 <ion-row>
@@ -46,6 +49,55 @@
                 
                     </ion-col>
                 </ion-row>
+                <ion-row>
+                    <ion-col style="top: 0px;" id="profile-container" size-xs="12" size-md="8" offset-md="2">
+                        <ion-card>
+                            <ion-card-header>
+                                <ion-card-title>
+                                    <ion-title>
+                                        {{text['aboutme']}}
+                                    </ion-title>
+                                </ion-card-title>
+                            </ion-card-header>
+                            <ion-list>
+                                {% for g in ['description','color','book','music','videogames','languages'] %}
+                                <ion-item>
+                                    <ion-text>
+                                        <b>{{text[g]}}:</b>{{user[g]}}
+                                    </ion-text>
+                                </ion-item>
+                                {% endfor %}
+                            </ion-list>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+                {% if editable %}
+                <ion-row>
+                    <ion-col size-xs="12" size-sm="4" offset-sm="4">
+                        <ion-item color="tertiary" id="text-pensando" class="ion-text-center">
+                            
+                            <ion-avatar slot="start">
+                                <img alt="Silhouette of a person's head" src="{{'/static/images/' + user['icon']}}" />
+                            </ion-avatar>
+                            <ion-item id="open-modal" button class="pub-text-item">
+                                    {{text['thinking']}}
+                            </ion-item>
+                        </ion-item>
+                        <ion-modal trigger="open-modal">
+                            {{publicar.publicar(text,'/static/images/' + user['icon']) }}
+                        </ion-modal>
+                
+                    </ion-col>
+                </ion-row>
+                {% endif %}
+                {% for post in posts %}
+                <ion-row>
+                    <ion-col  size-xs="12" size-sm="4" offset-sm="4">
+                        {{publicacion.publicacion('/static/images/' + users[post['uid']]['icon'],users[post['uid']]['name'] + ' ' + users[post['uid']]['lastname'] ,post['content'],'/static/images/' + post['media'])}}
+                    </ion-col>
+                </ion-row>
+                {% endfor %}
+
             </ion-grid>
         </ion-content>
     </ion-app>

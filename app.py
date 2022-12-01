@@ -48,14 +48,14 @@ def feed():
         if(not uid):
             return redirect('/')    
         user = getUser(uid)
-        profile = getUserProfile(uid)
         lang = getLanguage(uid)
         user['friends']
-        posts = db.getFriendsPosts(user['friends'])
+        posts = db.getFriendsPosts( user['friends'] + [user['_id']])
+        eprint(posts)
         # for post in posts:
         #     getUser(post['uid'])
 
-        return render_template('feed.html', text=text[lang], profile = profile, user = user,posts = posts)
+        return render_template('feed.html', text=text[lang], user = user,posts = posts,users=db.getUsersDict(user['friends'] + [user['_id']]))
 @app.route('/chat',methods = ['GET'])
 def chat():
     if(request.method == 'GET'):

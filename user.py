@@ -86,16 +86,24 @@ def edit():
         return json.dumps(response)
 
 
-@user.route('/perfil',methods = ['GET','PUT'])
-def profile():
+@user.route('/perfil/<userid>',methods = ['GET','PUT'])
+@user.route('/perfil/',methods = ['GET','PUT'])
+def profile(userid=None):
     uid = checkLogin(request)
     if(not uid):
         lang = request.accept_languages.best_match(supported_languages)    
         return render_template('notloged.html',text=text[lang])
 
-    user = getUser(uid)
     lang = getLanguage(uid)
-    return render_template('profile.html',text=text[lang],user=getUser(uid))
+    if(userid):
+        user = getUser( db.convertId(userid) )
+        if(not user):
+            return render_template('404.html',text=text[lang])
+        else:
+            return render_template('profile.html',text=text[lang],user=user,editable=False,posts=db.getFriendsPosts([userid]))
+    else:
+        return render_template('profile.html',text=text[lang],user=getUser(uid),editable=True,posts=db.getFriendsPosts([userid]))
+
 @user.route('/notifications',methods = ['GET'])
 def notifications():
     uid = checkLogin(request)
@@ -121,6 +129,30 @@ def manage():
         lang = request.accept_languages.best_match(supported_languages)  
         return render_template('manage.html',text=text[lang],user=user)
 
+@user.route('/search',methods = ['GET'])
+def search():
+    uid = checkLogin(request)
+    if(not uid):
+        lang = request.accept_languages.best_match(supported_languages)    
+        return render_template('notloged.html',text=text[lang])
+    else:
+        lang = getLanguage(uid)
+    query = request.args.get('query','').lower()
+    users = db.getAllUsers()
+    names = []
+    results = []
+    for i in users:
+        name = i['name'].lower()
+        lastname = i['lastname'].lower()
+        full = name + ' ' + lastname
+        eprint(query,name)
+        if(name.startswith(query) or lastname.startswith(query) ):
+            results.append(i)
+            eprint('epa si esta')
+    
+    # return remove_oid( bson.dumps(results) )
+    eprint(results)
+    return render_template('search.html',text=text[lang],resultUsers=results)
 @user.route('/user/<action>',methods = ['GET','POST','PUT','DELETE'])
 def friends(action):
     uid = checkLogin(request)
@@ -176,4 +208,4 @@ def friends(action):
             return '{"result":"error"}',400
         users = db.convertId(users)
         db.saveFriends(uid,users,action)
-        return bson.dumps( db.getUsers(users) )
+        return remove_oid( bson.dumps( db.getUsers(users) ) )

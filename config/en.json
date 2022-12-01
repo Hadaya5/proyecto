@@ -55,6 +55,7 @@
     "music":"favorite music",
     "languages": "favorite programming languages",
     "videogames": "favorite videogames",
-    "unfriend":"unfriend"
+    "unfriend":"unfriend",
+    "aboutme":"About me"
 
 }

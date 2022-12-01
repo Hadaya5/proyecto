@@ -3,5 +3,6 @@
     "password":"password",
     "host":"mongo",
     "port":"27017",
-    "database":"atinet"
+    "database":"atinet",
+    "uri":"mongodb+srv://cluster0.mag0gpo.mongodb.net/atinet?authSource=%24external&authMechanism=MONGODB-X509"
 }

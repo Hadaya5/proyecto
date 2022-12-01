@@ -36,7 +36,7 @@
               <ion-card-content>
                 <ion-list>
                   {% for friend in user['friends'] %}
-                  <ion-item >
+                  <ion-item class="user-ion-item" name="{{friend['_id']}}">
                     <ion-item-sliding>
                       <ion-item-options side="start">
                         <ion-item-option color="secondary">
@@ -50,33 +50,32 @@
                           <img alt="Silhouette of a person's head" src=" {{ '/static/images/' + friend.get('icon') if friend.get('icon') else url_for('static',filename='images/default/profile_icon.png') }}" />
                         </ion-avatar>
                         <ion-text>
-                          <h1 class="username">{{friend['name'] + friend['lastname']}}</h1>
+                          <h1 class="username">{{friend['name'] + ' ' + friend['lastname']}}</h1>
                         </ion-text>
 
                       </ion-item>
 
                       <ion-item-options>
-                        <ion-item-option color="danger" class="notifications-button">
+                        <ion-item-option color="danger" class="unfriend-button">
                           <!-- <ion-icon slot="top" name="notifications-outline"></ion-icon> -->
-                          <ion-icon slot="top" name="person-remove-outline"></ion-icon>
+                          <ion-icon slot="top" name="unfriend" name="person-remove-outline"></ion-icon>
                           {{ text['unfriend'] }}
                         </ion-item-option>
-                        <ion-item-option class="block-button" color="secondary">
+                        <ion-item-option name="block"  class="block-button" color="secondary">
                           <span class="material-symbols-outlined">
                             block
                             </span>
                           {{ text['block'] }}
                         </ion-item-option>
                       </ion-item-options>
-                    </ion-item-sliding>
-                      <ion-button color="danger" class="notifications-button buttons-desktop" color="primary" disabled="false">
+                    </ion-item-sliding >
+                      <ion-button color="danger" name="unfriend" class="unfriend-button buttons-desktop" color="primary" disabled="false">
                         <ion-icon  slot="start" name="person-remove-outline"></ion-icon>{{ text['unfriend'] }}
                       </ion-button>
-                      <ion-button class="block-button buttons-desktop" color="secondary">
+                      <ion-button name="block" class="block-button buttons-desktop" color="secondary">
                           <span class="material-symbols-outlined">
                             block
                             </span>
-                        <!-- <ion-icon slot="start" name="person-remove-outline"></ion-icon> -->
                         {{ text['block'] }}
 
                       </ion-button>
@@ -98,20 +97,20 @@
               <ion-card-content>
                 <ion-list>
                   {% for friend in user['blocks'] %}
-                  <ion-item >
+                  <ion-item class="user-ion-item" name="{{friend['_id']}}">
                     <ion-item-sliding>
                       <ion-item>
                         <ion-avatar slot="start">
                           <img alt="Silhouette of a person's head" src=" {{ '/static/images/' + friend.get('icon') if friend.get('icon') else url_for('static',filename='images/default/profile_icon.png') }}" />
                         </ion-avatar>
                         <ion-text>
-                          <h1 class="username">{{friend['name'] + friend['lastname']}}</h1>
+                          <h1 class="username">{{friend['name'] + ' ' + friend['lastname']}}</h1>
                         </ion-text>
 
                       </ion-item>
 
                       <ion-item-options>
-                        <ion-item-option color="secondary" class="notifications-button">
+                        <ion-item-option name="unblock" class="unblock-button" color="secondary" class="notifications-button">
                           <!-- <ion-icon slot="top" name="notifications-outline"></ion-icon> -->
                           <!-- <ion-icon slot="top" name="person-outline"></ion-icon> -->
                           <ion-icon name="close-circle-outline"></ion-icon>
@@ -119,9 +118,8 @@
                         </ion-item-option>
                       </ion-item-options>
                     </ion-item-sliding>
-                      <ion-button color="secondary" class="notifications-button buttons-desktop" color="primary" disabled="false">
+                      <ion-button color="secondary" name="unblock" class="unblock-button buttons-desktop" color="primary" disabled="false">
                         <ion-icon name="close-circle-outline"></ion-icon>
-                        <!-- <ion-icon  slot="start" name="person-remove-outline"></ion-icon> -->
                         {{ text['unblock'] }}
                       </ion-button>
                   </ion-item>
@@ -136,6 +134,8 @@
       </ion-grid>
     </ion-content>
   </ion-app>
+<script src="{{ url_for('static', filename='scripts/manage.js') }}"></script>
+
 </body>
 
 </html>

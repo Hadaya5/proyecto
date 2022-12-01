@@ -1,9 +1,9 @@
-{% macro publicar(text) -%}
+{% macro publicar(text,img) -%}
 
 <ion-item color="tertiary" id="text-pensando" class="ion-text-center">
                             
     <ion-avatar slot="start" class="ion-margin">
-        <img alt="Silhouette of a person's head" src="../static/images/hadaya.jpg" />
+        <img alt="Silhouette of a person's head" src="{{img}}" />
     </ion-avatar>
     <ion-textarea class="custom-input" placeholder="{{text['thinking']}}" auto-grow="true"
         value="" style="width: 100%;">
@@ -36,6 +36,7 @@
         display: none;
         width: 100%;
         height: 100%;
+        max-height: 500px;
         position: relative;
     }
 </style>
