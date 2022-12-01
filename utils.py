@@ -3,6 +3,10 @@ import boto3
 from botocore.exceptions import ClientError
 from PIL import Image
 import os
+import sys
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
+
 with open('config/aws','r') as h:
     awscredentials = h.read().split()
 def remove_oid(string):
@@ -34,7 +38,10 @@ def upload_file(file_name, object_name=None):
         object_name = os.path.basename(file_name)
 
     # Upload the file
-    s3_client = boto3.client('s3',aws_access_key_id=awscredentials[0],aws_secret_access_key=awscredentials[1])
+    s3_client = boto3.client('s3',
+        region_name = 'us-east-1',
+        aws_access_key_id=awscredentials[0],
+        aws_secret_access_key=awscredentials[1],)
     try:
         response = s3_client.upload_file(file_name, 'atinet', 'images/' + object_name)
         print('images/' + object_name)
