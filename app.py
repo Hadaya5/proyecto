@@ -68,7 +68,7 @@ def feed():
             text=text[lang],
             user = user,
             posts = posts,
-            users=db.getUsersDict(user['friends'] + [user['_id']])
+            users=db.getUsersDict()
             )
 @app.route('/chat',methods = ['GET'])
 def chat():

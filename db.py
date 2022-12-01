@@ -73,9 +73,12 @@ def getUsers(uids):
     users = list(db['users'].find({'_id':{'$in':uids} },{'idToken':0,'firebaseId':0} ))
     # eprint(users)
     return users
-def getUsersDict(uids):
+def getUsersDict(uids={}):
     db = get_database()
-    users = list(db['users'].find({'_id':{'$in':uids} },{'idToken':0,'firebaseId':0} ))
+    if(uids):
+        users = list(db['users'].find({'_id':{'$in':uids} },{'idToken':0,'firebaseId':0} ))
+    else:
+        users = list(db['users'].find({},{'idToken':0,'firebaseId':0} ))
     usersDict = {}
     for u in users:
         # usersDict[convertId(u['_id']) ] = u
