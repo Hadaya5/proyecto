@@ -71,29 +71,10 @@
                         </ion-card>
                     </ion-col>
                 </ion-row>
-                {% if editable %}
-                <ion-row>
-                    <ion-col size-xs="12" size-sm="4" offset-sm="4">
-                        <ion-item color="tertiary" id="text-pensando" class="ion-text-center">
-                            
-                            <ion-avatar slot="start">
-                                <img alt="Silhouette of a person's head" src="{{'https://d34pkca7tf0sls.cloudfront.net/images/' + user['icon']}}" />
-                            </ion-avatar>
-                            <ion-item id="open-modal" button class="pub-text-item">
-                                    {{text['thinking']}}
-                            </ion-item>
-                        </ion-item>
-                        <ion-modal trigger="open-modal">
-                            {{publicar.publicar(text,'https://d34pkca7tf0sls.cloudfront.net/images/' + user['icon']) }}
-                        </ion-modal>
-                
-                    </ion-col>
-                </ion-row>
-                {% endif %}
                 {% for post in posts %}
                 <ion-row>
                     <ion-col  size-xs="12" size-sm="4" offset-sm="4">
-                        {{publicacion.publicacion('https://d34pkca7tf0sls.cloudfront.net/images/' + users[post['uid']]['icon'],users[post['uid']]['name'] + ' ' + users[post['uid']]['lastname'] ,post['content'],'https://d34pkca7tf0sls.cloudfront.net/images/' + post['media'])}}
+                        {{publicacion.publicacion('https://d34pkca7tf0sls.cloudfront.net/images/' + user['icon'],user['name'] + ' ' + user['lastname'] ,post['content'],'https://d34pkca7tf0sls.cloudfront.net/images/' + post['media'],user['_id'].binary.hex().upper())}}
                     </ion-col>
                 </ion-row>
                 {% endfor %}

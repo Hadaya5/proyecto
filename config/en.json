@@ -57,6 +57,8 @@
     "videogames": "favorite videogames",
     "unfriend":"unfriend",
     "aboutme":"About me",
-    "birthday":"Birthday"
+    "birthday":"Birthday",
+    "addfriend": "Add Friend",
+    "check":"Check profile"
 
 }

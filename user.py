@@ -100,9 +100,9 @@ def profile(userid=None):
         if(not user):
             return render_template('404.html',text=text[lang])
         else:
-            return render_template('profile.html',text=text[lang],user=user,editable=False,posts=db.getFriendsPosts([userid]))
+            return render_template('profile.html',text=text[lang],user=user,editable=False,posts=db.getFriendsPosts([db.convertId(userid) ]))
     else:
-        return render_template('profile.html',text=text[lang],user=getUser(uid),editable=True,posts=db.getFriendsPosts([userid]))
+        return render_template('profile.html',text=text[lang],user=getUser(uid),editable=True,posts=db.getFriendsPosts([db.convertId(userid) ]))
 
 @user.route('/notifications',methods = ['GET'])
 def notifications():
@@ -112,8 +112,8 @@ def notifications():
         lang = request.accept_languages.best_match(supported_languages)    
         return render_template('notloged.html',text=text[lang])
     lang = getLanguage(uid)
-
-    return render_template('notificaciones.html',text=text[lang])
+    notifications = db.getUserNotifications(uid)
+    return render_template('notificaciones.html',text=text[lang],notifications=notifications)
 
 @user.route('/manage',methods = ['GET'])
 def manage():
@@ -139,7 +139,7 @@ def search():
         lang = getLanguage(uid)
     query = request.args.get('query','').lower()
     users = db.getAllUsers()
-    names = []
+    user = getUser(uid)
     results = []
     for i in users:
         name = i['name'].lower()
@@ -152,7 +152,7 @@ def search():
     
     # return remove_oid( bson.dumps(results) )
     eprint(results)
-    return render_template('search.html',text=text[lang],resultUsers=results)
+    return render_template('search.html',text=text[lang],resultUsers=results,friends=user['friends'])
 @user.route('/user/<action>',methods = ['GET','POST','PUT','DELETE'])
 def friends(action):
     uid = checkLogin(request)
@@ -188,6 +188,7 @@ def friends(action):
         return bson.dumps( db.getUsers(users) )
 
     if(request.method == 'POST'):
+        print(request.json)
         friend = request.json.get('user')
         if(not friend):
             return '{"result":"bad request"}',400
@@ -199,8 +200,17 @@ def friends(action):
             friends = user['friends']
             if(friend in friends):
                 friends.remove(friend)
-                db.saveFriends(uid,friends,'friends')
+                db.saveFriends(uid,friends,'friends')            
+            friends = db.getUser(friend)['friends']
+            if(uid in friends):
+                friends.remove(uid)
+                db.saveFriends(friend,friends,'friends')            
+
         db.saveFriends(uid,users,action)
+        if(action == 'friends'):
+            db.addFriend(friend,uid)
+            db.addNotification(friend,'You got a new friend: ' + user['name'],user['icon'],'/perfil/' + db.convertId(user['_id']))
+        
         return bson.dumps( db.getUsers(users) )
     elif(request.method == 'PUT'):
         users = request.json.get('users')

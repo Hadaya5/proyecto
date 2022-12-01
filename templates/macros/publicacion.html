@@ -1,9 +1,9 @@
-{% macro publicacion(userProfilePhoto,userDisplayName,content,media = None) -%}
+{% macro publicacion(userProfilePhoto,userDisplayName,content,media,userid) -%}
 
 <ion-card id="publicacion">
     <ion-card-header>
-        <ion-item lines="none">
-            <ion-avatar slot="start">
+        <ion-item lines="none" href="{{'/perfil/' + userid }}">
+            <ion-avatar slot="start" >
             <img alt="Silhouette of a person's head" src="{{ userProfilePhoto }}" />
             </ion-avatar>
             <ion-card-title>{{userDisplayName}}</ion-card-title>

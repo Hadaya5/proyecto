@@ -1,10 +1,10 @@
-{% macro notificacion(text) -%}
+{% macro notificacion(content,thumbnail,url) -%}
 
-    <ion-item href="#">
+    <ion-item href="{{url}}">
         <ion-avatar slot="start">
-        <img alt="Silhouette of a person's head" src="..https://d34pkca7tf0sls.cloudfront.net/images/luz.jpg" />
+        <img alt="Silhouette of a person's head" src="{{'https://d34pkca7tf0sls.cloudfront.net/images/' + thumbnail}}" />
         </ion-avatar>
-        <ion-label>Luz Rico {{text['tagged']}}</ion-label>
+        <ion-label>{{content}}</ion-label>
     </ion-item>
 
 {%- endmacro %}

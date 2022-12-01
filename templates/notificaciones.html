@@ -30,35 +30,11 @@
                             </ion-card-header>
                             <ion-card-content>
                                 <ion-list>
-                                    {{ notificacion(text) }}
-                                    <ion-item href="#">
-                                        <ion-avatar slot="start">
-                                        <img alt="Silhouette of a person's head" src="..https://d34pkca7tf0sls.cloudfront.net/images/hadaya.jpg" />
-                                        </ion-avatar>
-                                        <ion-label>Hadaya Hadaya {{text['commented']}}</ion-label>
-                                    </ion-item>
-
-                                    <ion-item href="#">
-                                        <ion-avatar slot="start">
-                                        <img alt="Silhouette of a person's head" src="..https://d34pkca7tf0sls.cloudfront.net/images/luz.jpg" />
-                                        </ion-avatar>
-                                        <ion-label>Luz Rico {{text['liked']}}</ion-label>
-                                    </ion-item>
-
-                                    <ion-item href="#">
-                                        <ion-avatar slot="start">
-                                        <img alt="Silhouette of a person's head" src="..https://d34pkca7tf0sls.cloudfront.net/images/david.jpg" />
-                                        </ion-avatar>
-                                        <ion-label>David Sanchez {{text['commented']}}</ion-label>
-                                    </ion-item>
-
-                                    <ion-item href="#">
-                                        <ion-avatar slot="start">
-                                        <img alt="Silhouette of a person's head" src="..https://d34pkca7tf0sls.cloudfront.net/images/luis.jpg" />
-                                        </ion-avatar>
-                                        <ion-label>Luis Peña {{text['liked']}}</ion-label>
-                                    </ion-item>
+                                    {% for n in notifications %}
+                                    {{ notificacion(n['content'],n['thumbnail'],n['url']) }}
+                                    {% endfor %}
                                 </ion-list>
+
 
                             </ion-card-content>
                         </ion-card>

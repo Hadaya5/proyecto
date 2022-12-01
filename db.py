@@ -132,3 +132,22 @@ def getAllUsers():
     db = get_database()
     users = db['users'].find({},{'idToken':0,'firebaseId':0})
     return list(users)
+def addNotification(uid,content,thumbnail,url):
+    db = get_database()
+    notifications = db['notifications']
+    notifications.insert_one({
+        'uid':uid,
+        'content':content,
+        'thumbnail':thumbnail,
+        'url':url
+    })
+def getUserNotifications(uid):
+    db = get_database()
+    return list(db['notifications'].find({"uid":uid}))
+def addFriend(uid,friend):
+    db = get_database()
+    friends = db['users'].find_one({'_id':uid},{'friends':1})['friends']
+    friends.append(friend)
+    db['users'].update_one({'_id':uid},{'$set':{'friends':friends}})
+    return friends
+
