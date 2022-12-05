@@ -85,6 +85,12 @@ def sign():
         return json.dumps({"result":"ok"})
 
 
+@auth.route('/login-facebook',methods = ['GET', 'POST'])
+def loginFacebook():
+    if (request.method == 'POST'):
+        eprint(request.json)
+
+
 @auth.route('/login',methods = ['GET', 'POST'])
 def login():
     if (request.method == 'POST'):
