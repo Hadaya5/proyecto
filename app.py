@@ -83,5 +83,5 @@ def chat():
         return render_template('chat.html', text=text[lang], profile = profile, user = user)
     
 if __name__ == '__main__':
-    ssl_content = ('/etc/letsencrypt/live/rutas.leyguistar.com/fullchain.pem','/etc/letsencrypt/live/rutas.leyguistar.com/privkey.pem')
+    ssl_content = ('/home/ubuntu/fullchain.pem','/home/ubuntu/privkey.pem')
     app.run(host='0.0.0.0',debug=True,ssl_context=ssl_content)     # open for everyone
