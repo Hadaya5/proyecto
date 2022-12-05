@@ -84,4 +84,4 @@ def chat():
     
 if __name__ == '__main__':
     ssl_content = ('/home/ubuntu/fullchain.pem','/home/ubuntu/privkey.pem')
-    app.run(host='0.0.0.0',debug=True,ssl_context=ssl_content)     # open for everyone
+    app.run(host='0.0.0.0',debug=True)     # open for everyone
